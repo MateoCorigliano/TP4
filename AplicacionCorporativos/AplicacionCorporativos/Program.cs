@@ -14,7 +14,7 @@ namespace AplicacionCorporativos
             //colocar al lado del nombre la palabra OK , guardar y actualizar el proyecto
             //Mate -> OK
             //Agus -> OK
-            //Eli ->
+            //Eli -> OK
             //Axel -> OK/Test
             //Mauri -> OK.
         }
