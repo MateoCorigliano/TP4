@@ -11,60 +11,58 @@ namespace AplicacionCorporativos
         static void Main(string[] args)
         {
             //MENU CONSOLA
+            //TODO: Queda pendiente validar el ingreso del usuario
             bool salir = false;
             do
             {
                 Console.WriteLine("MENU PRINCIPAL");
                 Console.WriteLine("--------------");
-                Console.WriteLine("1 - ALTA");
-                Console.WriteLine("2 - MODIFICAR");
-                Console.WriteLine("3 - BAJA");
-                Console.WriteLine("4 - BUSCAR");
-                Console.WriteLine("9 - SALIR");
-
+                Console.WriteLine("1 - Solicitar un servicio de correspondencia o encomienda");
+                Console.WriteLine("2 - Consultar el estado de un servicio");
+                Console.WriteLine("3 - Consultar el estado de cuenta");
+                Console.WriteLine("4 - Finalizar ");
                 Console.WriteLine("Ingrese una opcion y presione [enter]");
+
                 var opcion = Console.ReadLine();
+
                 switch (opcion)
                 {
                     case "1":
-                        Alta();
+                        AltaServicio();
                         break;
-
+                     /*
                     case "2":
-                        Modificar();
+                        ConsultaServicio();
                         break;
 
                     case "3":
-                        Baja();
+                        ConsultaCuenta();
                         break;
+                        */
 
                     case "4":
-                        Buscar();
-                        break;
-
-                    case "9":
                         salir = true;
                         break;
 
                     default:
                         Console.WriteLine("No ha ingresado una opcion correcta");
                         break;
-
-
                 }
 
             } while (!salir);
 
         }
 
-        private static void Alta()
+        private static void AltaServicio()
         {
-            //alta nueva persona
+            //Da de alta un nuevo servicio al usuario
             var persona = Persona.IngresarNueva();
             Agenda.Agregar(persona);
         }
 
-        private static void Baja()
+
+        /* Se comenta para completar dsp
+        private static void ConsultaCuenta()
         {
             var persona = Agenda.Seleccionar();
             if (persona == null)
@@ -81,7 +79,7 @@ namespace AplicacionCorporativos
             }
         }
 
-        private static void Modificar()
+        private static void ConsultaServicio()
         {
             var persona = Agenda.Seleccionar();
             if (persona == null)
@@ -102,5 +100,7 @@ namespace AplicacionCorporativos
             }
         }
     }
+    */
     }
+    
 }
