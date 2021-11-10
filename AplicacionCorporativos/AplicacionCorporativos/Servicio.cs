@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+
 namespace AplicacionCorporativos
 {
     class Servicio
@@ -69,7 +70,7 @@ namespace AplicacionCorporativos
 
 
 
-        public static Servicio IngresarNueva()
+        public static Servicio IngresarNuevo()
         {
             var servicio = new Servicio();
 
@@ -84,6 +85,7 @@ namespace AplicacionCorporativos
             servicio.Fecha = DateTime.Now;
 
             return servicio;
+        }
 
             /*
             public void Mostrar()
@@ -95,47 +97,18 @@ namespace AplicacionCorporativos
             }
 
             */
-            /*
-            public static Persona CrearModeloBusqueda()
+            
+            public static Servicio CrearModeloBusqueda()
             {
-                var modelo = new Persona();
+                var modelo = new Servicio();
 
-                modelo.Dni = IngresarDni(obligatorio: false);
-                modelo.Apellido = Ingreso("Ingrese el apellido", obligatorio: false);
-                modelo.Nombre = Ingreso("Ingrese el nombre", obligatorio: false);
-                modelo.FechaNacimiento = IngresarFecha("Ingrese la fecha", obligatorio: false);
+                modelo.Trackeo = IngresarEntero("Por favor ingrese el nro de trackeo");
+               
 
                 return modelo;
             }
-            */
-            /*
-            public bool CoincideCon(Persona modelo)
-            {
-                if (modelo.Dni != 0 && Dni != modelo.Dni)
-                {
-                    return false;
-                }
 
-                if (!string.IsNullOrWhiteSpace(modelo.Apellido) && !Apellido.Equals(modelo.Apellido, StringComparison.CurrentCultureIgnoreCase))
-                {
-                    return false;
-                }
-
-                if (!string.IsNullOrWhiteSpace(modelo.Nombre) && !Nombre.Equals(modelo.Nombre, StringComparison.CurrentCultureIgnoreCase))
-                {
-                    return false;
-                }
-
-                if (modelo.FechaNacimiento != DateTime.MinValue && FechaNacimiento != modelo.FechaNacimiento)
-                {
-                    return false;
-                }
-
-                return true;
-                */
-        }
-
-        private static decimal IngresarDecimal(string titulo)
+        private static int IngresarEntero(string titulo)
         {
 
             Console.WriteLine(titulo);
@@ -167,7 +140,40 @@ namespace AplicacionCorporativos
             } while (true);
         }
 
-        private static string IngresoTexto(string titulo, bool permiteNumeros = false, bool obligatorio = true)
+
+        private static decimal IngresarDecimal(string titulo)
+        {
+
+            Console.WriteLine(titulo);
+
+            do
+            {
+                var ingreso = Console.ReadLine();
+
+                if (string.IsNullOrEmpty(ingreso))
+                {
+                    Console.WriteLine("El ingreso no debe ser vacio");
+                    continue;
+                }
+
+                if (!decimal.TryParse(ingreso, out var salida))
+                {
+                    Console.WriteLine("El dato ingresado es incorrecto, ingrese nuevamente");
+                    continue;
+                }
+
+                if (salida <= 0)
+                {
+                    Console.WriteLine("El valor ingresado debe ser mayor a cero");
+                    continue;
+                }
+
+                return salida;
+
+            } while (true);
+        }
+
+        private static string IngresoTexto(string titulo, bool permiteNumeros = false)
         {
             string ingreso;
             do
@@ -193,31 +199,10 @@ namespace AplicacionCorporativos
                 return ingreso;
             } while (true);
 
-            //return ingreso;
+           
 
         }
-        // este metodo se realizo para no tener que repetir por ejemplo lo siguiente en el nombre y el apellido
-        /*
-        Console.WriteLine("Ingrese el nombre");
-            do
-            {
-                var ingreso = Console.ReadLine();
-                if (string.IsNullOrWhiteSpace(ingreso))
-                {
-                    Console.WriteLine("Debe ingresar un nombre");
-                    break;
-                }
-
-                if (ingreso.Any(Char.IsDigit))
-                {
-                    Console.WriteLine("el nombre no debe contener digitos");
-                    break;
-                }
-
-                    persona.Nombre = ingreso;
-
-            } while (string.IsNullOrWhiteSpace(persona.Apellido));
-            */
+        
 
     }
 }

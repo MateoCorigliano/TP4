@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+
 namespace AplicacionCorporativos
 {
     class Program
@@ -56,51 +57,36 @@ namespace AplicacionCorporativos
         private static void AltaServicio()
         {
             //Da de alta un nuevo servicio al usuario
-            var persona = Persona.IngresarNueva();
-            Agenda.Agregar(persona);
+            var servicio = Servicio.IngresarNuevo();
+            //Agenda.Agregar(persona);
         }
 
 
         /* Se comenta para completar dsp
+         * 
         private static void ConsultaCuenta()
         {
-            var persona = Agenda.Seleccionar();
-            if (persona == null)
-            {
-                return;
-            }
-            persona.Mostrar();
-            Console.WriteLine($"Se procedera a dar de baja a: {persona.TituloEntrada}. Esta ud seguro? (S/N)");
-            var key = Console.ReadKey(true);
-            if (key.Key == ConsoleKey.S)
-            {
-                Agenda.Baja(persona);
-                Console.WriteLine($"{persona.TituloEntrada} ha sido dada de baja");
-            }
-        }
-
-        private static void ConsultaServicio()
-        {
-            var persona = Agenda.Seleccionar();
-            if (persona == null)
-            {
-                return;
-            }
-            persona.Mostrar();
-            persona.Modificar();
-
-        }
-
-        public static void Buscar()
-        {
-            var persona = Agenda.Seleccionar();
+         var persona = Agenda.Seleccionar();
             if (persona != null)
             {
                 persona.Mostrar();
             }
+            
         }
+
+        private static void ConsultaServicio()
+        {
+             var persona = Agenda.Seleccionar();
+            if (persona != null)
+            {
+                persona.Mostrar();
+            }
+
+        }
+
+       
     }
     */
     }
-    
+
 }
