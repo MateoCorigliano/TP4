@@ -26,7 +26,6 @@ namespace AplicacionCorporativos
         public string ProvinciaDestino { get; set; }
         public string RegionDestino { get; set; }
         public string PaisDestino { get; set; }
-        //TODO: Propiedad Calculada del costo
         public decimal Costo { get; set; }
         public bool Urgente { get; set; }
         public bool EntregaPuerta { get; set; }

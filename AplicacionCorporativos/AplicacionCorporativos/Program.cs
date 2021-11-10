@@ -11,7 +11,7 @@ namespace AplicacionCorporativos
     {
         static void Main(string[] args)
         {
-            //TODO: DATOS QUE DEBEN VENIR DE FUENTES/TXT EXTERNOS:
+            //TODO: DATOS QUE DEBEN VENIR DE FUENTES/TXT EXTERNOS, recordar agregar los txt de prueba al proyecto de GitHub en la carpeta bin/debug:
             //PAISES
             //PROVINCIAS
             //LOCALIDADES
@@ -20,49 +20,62 @@ namespace AplicacionCorporativos
             //FACTURAS Y SUS SALDOS (CUENTA CORRIENTE)
             //USUARIOS HABILITADOS
 
-
-            //MENU CONSOLA
-            //TODO: Queda pendiente validar el ingreso del usuario
-            bool salir = false;
+            var usuario = AgendaUsuarios.Seleccionar();
             do
             {
-                Console.WriteLine("MENU PRINCIPAL");
-                Console.WriteLine("--------------");
-                Console.WriteLine("1 - Solicitar un servicio de correspondencia o encomienda");
-                Console.WriteLine("2 - Consultar el estado de un servicio");
-                //TODO Console.WriteLine("3 - Consultar el estado de cuenta");
-                Console.WriteLine("4 - Finalizar ");
-                Console.WriteLine("Ingrese una opcion y presione [enter]");
+             usuario = AgendaUsuarios.Seleccionar();
+            } while (usuario == null);
+            
 
-                var opcion = Console.ReadLine();
 
-                switch (opcion)
+            //MENU CONSOLA
+
+            bool salir = false;
+                do
                 {
-                    case "1":
-                        AltaServicio();
-                        break;
-                     
-                    case "2":
-                        ConsultaServicio();
-                        break;
+                    Console.WriteLine("MENU PRINCIPAL");
+                    Console.WriteLine("--------------");
+                    Console.WriteLine("1 - Solicitar un servicio de correspondencia o encomienda");
+                    Console.WriteLine("2 - Consultar el estado de un servicio");
+                    //TODO Console.WriteLine("3 - Consultar el estado de cuenta");
+                    Console.WriteLine("4 - Finalizar ");
+                    Console.WriteLine("Ingrese una opcion y presione [enter]");
+
+                    var opcion = Console.ReadLine();
+
+                    switch (opcion)
+                    {
+                        case "1":
+                            AltaServicio();
+                            break;
+
+                        case "2":
+                            ConsultaServicio();
+                            break;
                         /*
                     case "3":
                         ConsultaCuenta();
                         break;
                         */
 
-                    case "4":
-                        salir = true;
-                        break;
+                        case "4":
+                            salir = true;
+                            break;
 
-                    default:
-                        Console.WriteLine("No ha ingresado una opcion correcta");
-                        break;
-                }
+                        default:
+                            Console.WriteLine("No ha ingresado una opcion correcta");
+                            break;
+                    }
 
-            } while (!salir);
+                } while (!salir);
+            
+          
 
         }
+
+        
+           
+        
 
         private static void AltaServicio()
         {
