@@ -11,6 +11,16 @@ namespace AplicacionCorporativos
     {
         static void Main(string[] args)
         {
+            //TODO: DATOS QUE DEBEN VENIR DE FUENTES/TXT EXTERNOS:
+            //PAISES
+            //PROVINCIAS
+            //LOCALIDADES
+            //REGIONES (SUR, CENTRO, NORTE, METROPOLITANA (BS Y CABA))
+            //CUADRO TARIFARIO
+            //FACTURAS Y SUS SALDOS (CUENTA CORRIENTE)
+            //USUARIOS HABILITADOS
+
+
             //MENU CONSOLA
             //TODO: Queda pendiente validar el ingreso del usuario
             bool salir = false;
@@ -19,7 +29,7 @@ namespace AplicacionCorporativos
                 Console.WriteLine("MENU PRINCIPAL");
                 Console.WriteLine("--------------");
                 Console.WriteLine("1 - Solicitar un servicio de correspondencia o encomienda");
-                //TODO Console.WriteLine("2 - Consultar el estado de un servicio");
+                Console.WriteLine("2 - Consultar el estado de un servicio");
                 //TODO Console.WriteLine("3 - Consultar el estado de cuenta");
                 Console.WriteLine("4 - Finalizar ");
                 Console.WriteLine("Ingrese una opcion y presione [enter]");
@@ -31,11 +41,11 @@ namespace AplicacionCorporativos
                     case "1":
                         AltaServicio();
                         break;
-                     /*
+                     
                     case "2":
                         ConsultaServicio();
                         break;
-
+                        /*
                     case "3":
                         ConsultaCuenta();
                         break;
@@ -59,7 +69,7 @@ namespace AplicacionCorporativos
             //Da de alta un nuevo servicio al usuario
             var servicio = Servicio.IngresarNuevo();
 
-            //TODO: mostrar costo antes de confirmar
+            Console.WriteLine($"El costo total por el servicio es: {servicio.Costo}");
 
             //confirmacion se servicio:
             
@@ -87,8 +97,18 @@ namespace AplicacionCorporativos
         }
 
 
-        /* Se comenta para completar dsp
-         * 
+
+        private static void ConsultaServicio()
+        {
+            var servicio = AgendaServicios.Seleccionar();
+            if (servicio != null)
+            {
+                servicio.Mostrar();
+            }
+
+        }
+
+        /*
         private static void ConsultaCuenta()
         {
          var persona = Agenda.Seleccionar();
@@ -98,20 +118,13 @@ namespace AplicacionCorporativos
             }
             
         }
+        */
 
-        private static void ConsultaServicio()
-        {
-             var persona = Agenda.Seleccionar();
-            if (persona != null)
-            {
-                persona.Mostrar();
-            }
-
-        }
+        
 
        
-    }
-    */
+    
+    
     }
 
 }

@@ -54,9 +54,10 @@ namespace AplicacionCorporativos
 
             foreach (var servicio in entradas.Values)
             {
-                
+                if (servicio.CoincideCon(modelo))
+                {
                     return servicio;
-                
+                }
             }
             Console.WriteLine("No se ha encontrado la persona ingresada");
             return null;

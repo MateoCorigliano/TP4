@@ -31,7 +31,7 @@ namespace AplicacionCorporativos
         public bool Urgente { get; set; }
         public bool EntregaPuerta { get; set; }
         public bool RetiroPuerta { get; set; }
-        public decimal Peso { get; set; }
+        public int Peso { get; set; }
         public decimal ValorDeclarado { get; set; }
 
         /*
@@ -69,7 +69,7 @@ namespace AplicacionCorporativos
             Urgente = bool.Parse(datos[13]);
             EntregaPuerta = bool.Parse(datos[14]);
             RetiroPuerta = bool.Parse(datos[15]);
-            Peso = decimal.Parse(datos[16]);
+            Peso = int.Parse(datos[16]);
             Fecha = DateTime.Parse(datos[17]);
             ValorDeclarado = decimal.Parse(datos[18]);
 
@@ -98,7 +98,7 @@ namespace AplicacionCorporativos
 
             
             servicio.Trackeo = new Random().Next(50000000, 99999999); //TODO buscar un metodo mas prolijo de trackeo
-            // TODO servicio.Estado = Metodo a definir
+            servicio.Estado = "RECIBIDO"; //EL ESTADO SERA ACTUALIZADO POR UNA APLICACION LOGISTICA EXTERNA A ESTA APLICACION
 
             servicio.DomicilioOrigen = IngresoTexto("Por favor ingrese Domicilio de Origen");
             servicio.LocalidadOrigen = IngresoTexto("Por favor ingrese Localidad de Origen");
@@ -111,7 +111,8 @@ namespace AplicacionCorporativos
             servicio.RegionDestino = IngresoTexto("Por favor ingrese Region de Destino");
             servicio.PaisDestino = IngresoTexto("Por favor ingrese Pais de Destino");
             //TODO : ver tambien de establecer la region del pais fuera de argentina ya que afecta al costo: puede ser limitorfe, america latina, america del norte, europa, asia
-            servicio.Peso = IngresarDecimal("Ingrese el peso");
+            servicio.Peso = IngresarPeso("Ingrese el peso expresado en gramos hasta 30000");
+
 
             //TODO servicio.Urgente = IngresarBool(""); ver de establecer un metodo o dejar la validacion individual de abajo
 
@@ -232,7 +233,7 @@ namespace AplicacionCorporativos
 
             //peso hasta 500gr:
 
-            if (servicio.Peso < 1) //TODO: ver por que no deja utilizar el operador '<' cuando es decimal, sino vamos a tener que utilizar INT y que ingresen gramos
+            if (servicio.Peso < 500) //TODO: utilizo entero, ver por que no deja utilizar el operador '<' cuando es decimal, sino vamos a tener que utilizar INT y que ingresen gramos
             {
                 if(servicio.PaisDestino == servicio.PaisOrigen)
                 { 
@@ -268,7 +269,7 @@ namespace AplicacionCorporativos
             }
 
             //peso hasta 10kg
-            if (servicio.Peso < 10 && servicio.Peso >= 1) 
+            if (servicio.Peso < 10 && servicio.Peso >= 0.5) 
             {
                 if (servicio.PaisDestino == servicio.PaisOrigen)
                 {
@@ -340,7 +341,7 @@ namespace AplicacionCorporativos
             }
 
             //peso hasta 30kg
-            if (servicio.Peso < 30 && servicio.Peso >= 20)
+            if (servicio.Peso <= 30 && servicio.Peso >= 20)
             {
                 if (servicio.PaisDestino == servicio.PaisOrigen)
                 {
@@ -392,20 +393,29 @@ namespace AplicacionCorporativos
             return servicio;
         }
 
-        /*
+        
         public void Mostrar()
         {
-            Console.WriteLine($"DNI: {Dni}");
-            Console.WriteLine($"Nombre: {Nombre}, Apellido: {Apellido}");
-            Console.WriteLine($"Fecha Nacimietno: {FechaNacimiento:dd/MM/yyyy}");
+            Console.WriteLine($"Trackeo: {Trackeo}");
+            Console.WriteLine($"Estado: {Estado}");
 
         }
 
-        */
-
-      
-
         
+
+        public bool CoincideCon(Servicio modelo)
+        {
+            if (modelo.Trackeo != 0 && Trackeo != modelo.Trackeo)
+            {
+                return false;
+            }
+
+            
+
+            return true;
+        }
+
+
 
         public static Servicio CrearModeloBusqueda()
         {
@@ -441,6 +451,38 @@ namespace AplicacionCorporativos
                 if (salida <= 0)
                 {
                     Console.WriteLine("El valor ingresado debe ser mayor a cero");
+                    continue;
+                }
+
+                return salida;
+
+            } while (true);
+        }
+
+        private static int IngresarPeso(string titulo)
+        {
+
+            Console.WriteLine(titulo);
+
+            do
+            {
+                var ingreso = Console.ReadLine();
+
+                if (string.IsNullOrEmpty(ingreso))
+                {
+                    Console.WriteLine("El ingreso no debe ser vacio");
+                    continue;
+                }
+
+                if (!Int32.TryParse(ingreso, out var salida))
+                {
+                    Console.WriteLine("El dato ingresado es incorrecto, ingrese nuevamente");
+                    continue;
+                }
+
+                if (salida <= 0 || salida >= 30000)
+                {
+                    Console.WriteLine("El valor ingresado debe ser mayor a cero y menor o igual a 30000");
                     continue;
                 }
 
