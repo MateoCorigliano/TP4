@@ -22,7 +22,7 @@ namespace AplicacionCorporativos
         public bool Urgente { get; set; }
         public bool EntregaSucursal { get; set; }
         public bool RetiroSucursal { get; set; }
-        public int Peso { get; set; }
+        public decimal Peso { get; set; }
         //propiedad calculada
         /*
         public string TituloEntrada
@@ -51,7 +51,7 @@ namespace AplicacionCorporativos
             Urgente = bool.Parse(datos[5]);
             EntregaSucursal = bool.Parse(datos[6]);
             RetiroSucursal = bool.Parse(datos[7]);
-            Peso = int.Parse(datos[8]);
+            Peso = decimal.Parse(datos[8]);
             Fecha = DateTime.Parse(datos[9]);
 
         }
@@ -75,9 +75,9 @@ namespace AplicacionCorporativos
 
             //servicio.Trackeo = GenerarTrackeo();
             //servicio.Estado = Ingreso("Ingrese el apellido");
-            servicio.Origen = Ingreso("Ingrese el origen de pedido");
-            servicio.Destino = Ingreso("Ingrese el destino de pedido");
-            //servicio.Peso = Ingreso("Ingrese el peso");
+            servicio.Origen = IngresoTexto("Ingrese el origen de pedido");
+            servicio.Destino = IngresoTexto("Ingrese el destino de pedido");
+            servicio.Peso = IngresarDecimal("Ingrese el peso");
             //servicio.Urgente = MetodoDefinir();
             //servicio.EntregaSucursal = MetodoDefinir();
             //servicio.RetiroSucursal = MetodoDefinir();
@@ -167,7 +167,7 @@ namespace AplicacionCorporativos
             } while (true);
         }
 
-        private static string Ingreso(string titulo, bool permiteNumeros = false, bool obligatorio = true)
+        private static string IngresoTexto(string titulo, bool permiteNumeros = false, bool obligatorio = true)
         {
             string ingreso;
             do
