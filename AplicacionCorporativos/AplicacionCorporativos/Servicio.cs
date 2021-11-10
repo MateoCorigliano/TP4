@@ -79,18 +79,22 @@ namespace AplicacionCorporativos
             return $"{Trackeo} ; {Estado} ; {DomicilioOrigen};{LocalidadOrigen};{ProvinciaOrigen};{RegionOrigen};{PaisOrigen};{DomicilioDestino};{LocalidadDestino};{ProvinciaDestino};{RegionDestino};{PaisDestino} ; {Costo} ; {Urgente} ; {EntregaSucursal} ; {RetiroSucursal} ; {Peso} ; {Fecha}";
         }
 
-        public void GenerarTrackeo()
+        /*
+        public static Servicio GenerarTrackeo()
         {
-            throw new NotImplementedException();
-        }
+            var numero = 0;
+            var salida = numero + 1;
 
+          // return salida ;
+        }
+        */
 
 
         public static Servicio IngresarNuevo()
         {
             var servicio = new Servicio();
 
-            //servicio.Trackeo = GenerarTrackeo();
+            //servicio.Trackeo = GenerarTrackeo(); corregir metodo
             //servicio.Estado = Metodo a definir
 
             servicio.DomicilioOrigen = IngresoTexto("Por favor ingrese Domicilio de Origen");
@@ -123,16 +127,17 @@ namespace AplicacionCorporativos
             }
 
             */
+        
             
-            public static Servicio CrearModeloBusqueda()
-            {
+        public static Servicio CrearModeloBusqueda()
+        {
                 var modelo = new Servicio();
 
                 modelo.Trackeo = IngresarEntero("Por favor ingrese el nro de trackeo");
                
 
                 return modelo;
-            }
+        }
 
         private static int IngresarEntero(string titulo)
         {
