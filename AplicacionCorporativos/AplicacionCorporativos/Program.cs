@@ -58,7 +58,32 @@ namespace AplicacionCorporativos
         {
             //Da de alta un nuevo servicio al usuario
             var servicio = Servicio.IngresarNuevo();
-            AgendaServicios.Agregar(servicio);
+
+            //TODO: mostrar costo antes de confirmar
+
+            //confirmacion se servicio:
+            
+            do
+            {
+                Console.WriteLine("¿Confirma Operacion de acuerdo a valor generado? Responder S/N");
+                char ingreso = char.Parse(Console.ReadLine());
+                ingreso = char.ToUpper(ingreso);
+               
+
+                if (ingreso == 'S')
+                {
+                    AgendaServicios.Agregar(servicio);
+                    break;
+                }
+                if (ingreso == 'N')
+                {
+                    break;
+                }
+                else { 
+                Console.WriteLine("Por favor introducir un valor correcto");
+                    
+                }
+            } while (true);
         }
 
 

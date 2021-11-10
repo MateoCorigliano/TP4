@@ -29,9 +29,10 @@ namespace AplicacionCorporativos
         //TODO: Propiedad Calculada del costo
         public decimal Costo { get; set; }
         public bool Urgente { get; set; }
-        public bool EntregaSucursal { get; set; }
-        public bool RetiroSucursal { get; set; }
+        public bool EntregaPuerta { get; set; }
+        public bool RetiroPuerta { get; set; }
         public decimal Peso { get; set; }
+        public decimal ValorDeclarado { get; set; }
 
         /*
         public string TituloEntrada
@@ -66,17 +67,18 @@ namespace AplicacionCorporativos
             PaisDestino = datos[11];
             Costo = decimal.Parse(datos[12]);
             Urgente = bool.Parse(datos[13]);
-            EntregaSucursal = bool.Parse(datos[14]);
-            RetiroSucursal = bool.Parse(datos[15]);
+            EntregaPuerta = bool.Parse(datos[14]);
+            RetiroPuerta = bool.Parse(datos[15]);
             Peso = decimal.Parse(datos[16]);
             Fecha = DateTime.Parse(datos[17]);
+            ValorDeclarado = decimal.Parse(datos[18]);
 
         }
         //fin constructores
            
         public string ObtenerLineaDatos()
         {
-            return $"{Trackeo} ; {Estado} ; {DomicilioOrigen};{LocalidadOrigen};{ProvinciaOrigen};{RegionOrigen};{PaisOrigen};{DomicilioDestino};{LocalidadDestino};{ProvinciaDestino};{RegionDestino};{PaisDestino} ; {Costo} ; {Urgente} ; {EntregaSucursal} ; {RetiroSucursal} ; {Peso} ; {Fecha}";
+            return $"{Trackeo} ; {Estado} ; {DomicilioOrigen};{LocalidadOrigen};{ProvinciaOrigen};{RegionOrigen};{PaisOrigen};{DomicilioDestino};{LocalidadDestino};{ProvinciaDestino};{RegionDestino};{PaisDestino} ; {Costo} ; {Urgente} ; {EntregaPuerta} ; {RetiroPuerta} ; {Peso} ; {Fecha} ; {ValorDeclarado}";
         }
 
         /*
@@ -102,13 +104,13 @@ namespace AplicacionCorporativos
             servicio.LocalidadOrigen = IngresoTexto("Por favor ingrese Localidad de Origen");
             servicio.ProvinciaOrigen = IngresoTexto("Por favor ingrese Provincia de Origen");//TODO ver de establecer una base con provincias disponibles y validar
             servicio.RegionOrigen = IngresoTexto("Por favor ingrese Region de Origen");//TODOver si hay logica para autodeterminar la region segun provincia
-            servicio.PaisOrigen = "Argentina";
+            servicio.PaisOrigen = "ARGENTINA";
             servicio.DomicilioDestino = IngresoTexto("Por favor ingrese Domicilio de Destino");
             servicio.LocalidadDestino = IngresoTexto("Por favor ingrese Localidad de Destino");
             servicio.ProvinciaDestino = IngresoTexto("Por favor ingrese Provincia de Destino");
             servicio.RegionDestino = IngresoTexto("Por favor ingrese Region de Destino");
             servicio.PaisDestino = IngresoTexto("Por favor ingrese Pais de Destino");
-
+            //TODO : ver tambien de establecer la region del pais fuera de argentina ya que afecta al costo: puede ser limitorfe, america latina, america del norte, europa, asia
             servicio.Peso = IngresarDecimal("Ingrese el peso");
 
             //TODO servicio.Urgente = IngresarBool(""); ver de establecer un metodo o dejar la validacion individual de abajo
@@ -153,16 +155,16 @@ namespace AplicacionCorporativos
             {
 
 
-                Console.WriteLine("Por favor determine si se entrega en Sucursal o por puerta");
-                Console.WriteLine("1 - Sucursal");
-                Console.WriteLine("2 - Por puerta");
+                Console.WriteLine("Por favor determine si se entrega Puerta o Sucursal");
+                Console.WriteLine("1 - Puerta");
+                Console.WriteLine("2 - Sucursal");
 
                 var opcion = Console.ReadLine();
 
                 switch (opcion)
                 {
                     case "1":
-                        servicio.EntregaSucursal = true;
+                        servicio.EntregaPuerta = true;
                         salir2 = true;
                         break;
                         
@@ -170,7 +172,7 @@ namespace AplicacionCorporativos
 
 
                     case "2":
-                        servicio.EntregaSucursal = false;
+                        servicio.EntregaPuerta = false;
                         salir2 = true;
                         break;
 
@@ -190,23 +192,23 @@ namespace AplicacionCorporativos
             {
 
 
-                Console.WriteLine("Por favor determine si el retiro es en Sucursal o por Puerta");
-                Console.WriteLine("1 - Sucursal");
-                Console.WriteLine("2 - Puerta");
+                Console.WriteLine("Por favor determine si el retiro es por Puerta o Sucursal");
+                Console.WriteLine("1 - Puerta");
+                Console.WriteLine("2 - Sucursal");
 
                 var opcion = Console.ReadLine();
 
                 switch (opcion)
                 {
                     case "1":
-                        servicio.RetiroSucursal = true;
+                        servicio.RetiroPuerta = true;
                         salir3 = true;
                         break;
 
 
 
                     case "2":
-                        servicio.RetiroSucursal = false;
+                        servicio.RetiroPuerta = false;
                         salir3 = true;
                         break;
 
@@ -220,6 +222,29 @@ namespace AplicacionCorporativos
             } while (!salir3);
 
             servicio.Fecha = DateTime.Now;
+            servicio.ValorDeclarado = IngresarDecimal("Ingrese el valor declarado");
+
+        
+
+            //comienzo logica para calcular costo
+
+            if (servicio.Peso <30 && servicio.PaisDestino == servicio.PaisOrigen)
+            {
+                servicio.Costo = servicio.Costo + 10; //TODO en este caso el costo en realidad es variable, deberia venir de una fuente de datos
+            }
+            if (servicio.Urgente == true)
+            {
+                servicio.Costo = servicio.Costo + 10;
+            }
+            if (servicio.EntregaPuerta == true)
+            {
+                servicio.Costo = servicio.Costo + 10;
+            }
+            if (servicio.RetiroPuerta == true)
+            {
+                servicio.Costo = servicio.Costo + 10;
+            }
+
 
             return servicio;
         }
@@ -234,6 +259,8 @@ namespace AplicacionCorporativos
         }
 
         */
+
+      
 
         
 
@@ -321,6 +348,7 @@ namespace AplicacionCorporativos
                 Console.WriteLine(titulo);
 
                 ingreso = Console.ReadLine();
+                
 
                 if (string.IsNullOrWhiteSpace(ingreso))
                 {
@@ -334,8 +362,8 @@ namespace AplicacionCorporativos
                     continue;
                 }
 
-                //break;
-                return ingreso;
+                string ingreso1 = ingreso.ToUpper();
+                return ingreso1;
             } while (true);
 
            
