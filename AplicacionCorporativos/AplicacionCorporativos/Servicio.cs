@@ -22,7 +22,7 @@ namespace AplicacionCorporativos
         public bool Urgente { get; set; }
         public bool EntregaSucursal { get; set; }
         public bool RetiroSucursal { get; set; }
-
+        public int Peso { get; set; }
         //propiedad calculada
         /*
         public string TituloEntrada
@@ -34,13 +34,13 @@ namespace AplicacionCorporativos
             }
          */
             //constuctores
-       public Persona()
+       public Servicio()
        {
 
        }
 
-        public Persona(string linea)
-        {
+       public Servicio(string linea)
+       {
 
             var datos = linea.Split(';');
             Trackeo = int.Parse(datos[0]);
@@ -51,61 +51,41 @@ namespace AplicacionCorporativos
             Urgente = bool.Parse(datos[5]);
             EntregaSucursal = bool.Parse(datos[6]);
             RetiroSucursal = bool.Parse(datos[7]);
-            Fecha = DateTime.Parse(datos[8]);
+            Peso = int.Parse(datos[8]);
+            Fecha = DateTime.Parse(datos[9]);
 
+       }
+        //fin constructores
+
+        public string ObtenerLineaDatos()
+        {
+                return $"{Trackeo} ; {Estado} ; {Origen} ; {Destino} ; {Costo} ; {Urgente} ; {EntregaSucursal} ; {RetiroSucursal} ; {Peso} ; {Fecha}";
         }
-            //fin constructores
 
-            public string ObtenerLineaDatos()
-            {
-                return $"{Trackeo} ; {Estado} ; {Origen} ; {Destino}";
-            }
-
+        public void GenerarTrackeo()
+        {
+            throw new NotImplementedException();
+        }
 
 
-            public static Persona IngresarNueva()
-            {
-                var persona = new Persona();
 
-                Console.WriteLine("Nueva Persona");
+        public static Servicio IngresarNueva()
+        {
+            var servicio = new Servicio();
+            
+            //servicio.Trackeo = GenerarTrackeo();
+            //servicio.Estado = Ingreso("Ingrese el apellido");
+            servicio.Origen = Ingreso("Ingrese el origen de pedido");
+            servicio.Destino = Ingreso("Ingrese el destino de pedido");
+            //servicio.Peso = Ingreso("Ingrese el peso");
+            //servicio.Urgente = MetodoDefinir();
+            //servicio.EntregaSucursal = MetodoDefinir();
+            //servicio.RetiroSucursal = MetodoDefinir();
+            servicio.Fecha = DateTime.Now;
 
-
-                persona.Dni = IngresarDni();
-                persona.Apellido = Ingreso("Ingrese el apellido");
-                persona.Nombre = Ingreso("Ingrese el nombre");
-                persona.FechaNacimiento = IngresarFecha("Ingrese fecha nacimiento");
-
-                return persona;
-            }
-
-            public void Modificar()
-            {
-                Console.WriteLine($"Apellido {Apellido} - S para modificar, otra tecla para continuar");
-                var tecla = Console.ReadKey(true);
-                if (tecla.Key == ConsoleKey.S)
-                {
-                    Apellido = Ingreso("Ingrese el nuevo apellido");
-                }
-
-                Console.WriteLine($"Nombre {Nombre} - S para modificar, otra tecla para continuar");
-                tecla = Console.ReadKey(true);
-                if (tecla.Key == ConsoleKey.S)
-                {
-                    Nombre = Ingreso("Ingrese el nuevo nombre");
-                }
-
-                Console.WriteLine($"Fecha Nacimiento {FechaNacimiento} - S para modificar, otra tecla para continuar");
-                tecla = Console.ReadKey(true);
-                if (tecla.Key == ConsoleKey.S)
-                {
-                    FechaNacimiento = IngresarFecha("Ingrese la nueva fecha");
-                }
-
-                Agenda.Grabar();
-
-
-            }
-
+            return servicio;
+       
+            /*
             public void Mostrar()
             {
                 Console.WriteLine($"DNI: {Dni}");
@@ -114,6 +94,8 @@ namespace AplicacionCorporativos
 
             }
 
+            */
+            /*
             public static Persona CrearModeloBusqueda()
             {
                 var modelo = new Persona();
@@ -124,10 +106,9 @@ namespace AplicacionCorporativos
                 modelo.FechaNacimiento = IngresarFecha("Ingrese la fecha", obligatorio: false);
 
                 return modelo;
-
-
             }
-
+            */
+            /*
             public bool CoincideCon(Persona modelo)
             {
                 if (modelo.Dni != 0 && Dni != modelo.Dni)
@@ -152,44 +133,35 @@ namespace AplicacionCorporativos
 
                 return true;
             }
-
-            private static int IngresarDni(bool obligatorio = true)
+            */
+            private static decimal IngresarDecimal(string titulo)
             {
-                var titulo = "Ingrese dni(entero de 8 cifras)";
-                if (!obligatorio)
-                {
-                    titulo += "o presione [Enter] para continuar";
-                }
+
                 Console.WriteLine(titulo);
 
                 do
                 {
                     var ingreso = Console.ReadLine();
 
-                    if (!obligatorio && string.IsNullOrEmpty(ingreso))
+                    if (string.IsNullOrEmpty(ingreso))
                     {
-                        return 0;
+                        Console.WriteLine("El ingreso no debe ser vacio");
+                        continue;
                     }
 
-                    if (!Int32.TryParse(ingreso, out var dni))
+                    if (!Int32.TryParse(ingreso, out var salida))
                     {
                         Console.WriteLine("El dato ingresado es incorrecto, ingrese nuevamente");
                         continue;
                     }
 
-                    if (dni < 10000000 || dni > 99999999)
+                    if (salida <= 0)
                     {
-                        Console.WriteLine("El dato ingresado no tiene 8 cifras, ingrese nuevamente");
+                        Console.WriteLine("El valor ingresado debe ser mayor a cero");
                         continue;
                     }
 
-                    if (Agenda.Existe(dni) && obligatorio == true)
-                    {
-                        Console.WriteLine("El dni ya existe actualmente");
-                        continue;
-                    }
-
-                    return dni;
+                    return salida;
 
                 } while (true);
             }
