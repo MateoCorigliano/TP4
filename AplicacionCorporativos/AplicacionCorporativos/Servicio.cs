@@ -16,15 +16,23 @@ namespace AplicacionCorporativos
         public int Trackeo { get; set; }
         public DateTime Fecha { get; set; }
         public string Estado { get; set; }
-        public string Origen { get; set; }
-        public string Destino { get; set; }
-        //Para hacer: Propiedad Calculada
+        public string DomicilioOrigen { get; set; }
+        public string LocalidadOrigen { get; set; }
+        public string ProvinciaOrigen { get; set; }
+        public string RegionOrigen { get; set; }
+        public string PaisOrigen { get; set; } //siempre sera Argentina
+        public string DomicilioDestino { get; set; }
+        public string LocalidadDestino { get; set; }
+        public string ProvinciaDestino { get; set; }
+        public string RegionDestino { get; set; }
+        public string PaisDestino { get; set; }
+        //TODO: Propiedad Calculada del costo
         public decimal Costo { get; set; }
         public bool Urgente { get; set; }
         public bool EntregaSucursal { get; set; }
         public bool RetiroSucursal { get; set; }
         public decimal Peso { get; set; }
-        //propiedad calculada
+
         /*
         public string TituloEntrada
             {
@@ -46,21 +54,29 @@ namespace AplicacionCorporativos
             var datos = linea.Split(';');
             Trackeo = int.Parse(datos[0]);
             Estado = datos[1];
-            Origen = datos[2];
-            Destino = datos[3];
-            Costo = decimal.Parse(datos[4]);
-            Urgente = bool.Parse(datos[5]);
-            EntregaSucursal = bool.Parse(datos[6]);
-            RetiroSucursal = bool.Parse(datos[7]);
-            Peso = decimal.Parse(datos[8]);
-            Fecha = DateTime.Parse(datos[9]);
+            DomicilioOrigen = datos[2];
+            LocalidadOrigen = datos[3];
+            ProvinciaOrigen = datos[4];
+            RegionOrigen = datos[5];
+            PaisOrigen = datos[6];
+            DomicilioDestino = datos[7];
+            LocalidadDestino = datos[8];
+            ProvinciaDestino = datos[9];
+            RegionDestino = datos[10];
+            PaisDestino = datos[11];
+            Costo = decimal.Parse(datos[12]);
+            Urgente = bool.Parse(datos[13]);
+            EntregaSucursal = bool.Parse(datos[14]);
+            RetiroSucursal = bool.Parse(datos[15]);
+            Peso = decimal.Parse(datos[16]);
+            Fecha = DateTime.Parse(datos[17]);
 
         }
         //fin constructores
-
+           
         public string ObtenerLineaDatos()
         {
-            return $"{Trackeo} ; {Estado} ; {Origen} ; {Destino} ; {Costo} ; {Urgente} ; {EntregaSucursal} ; {RetiroSucursal} ; {Peso} ; {Fecha}";
+            return $"{Trackeo} ; {Estado} ; {DomicilioOrigen};{LocalidadOrigen};{ProvinciaOrigen};{RegionOrigen};{PaisOrigen};{DomicilioDestino};{LocalidadDestino};{ProvinciaDestino};{RegionDestino};{PaisDestino} ; {Costo} ; {Urgente} ; {EntregaSucursal} ; {RetiroSucursal} ; {Peso} ; {Fecha}";
         }
 
         public void GenerarTrackeo()
@@ -75,13 +91,23 @@ namespace AplicacionCorporativos
             var servicio = new Servicio();
 
             //servicio.Trackeo = GenerarTrackeo();
-            //servicio.Estado = Ingreso("Ingrese el apellido");
-            servicio.Origen = IngresoTexto("Ingrese el origen de pedido");
-            servicio.Destino = IngresoTexto("Ingrese el destino de pedido");
+            //servicio.Estado = Metodo a definir
+
+            servicio.DomicilioOrigen = IngresoTexto("Por favor ingrese Domicilio de Origen");
+            servicio.LocalidadOrigen = IngresoTexto("Por favor ingrese Localidad de Origen");
+            servicio.ProvinciaOrigen = IngresoTexto("Por favor ingrese Provincia de Origen");//ver de establecer una base con provincias disponibles y validar
+            servicio.RegionOrigen = IngresoTexto("Por favor ingrese Region de Origen");//ver si hay logica para autodeterminar la region segun provincia
+            servicio.PaisOrigen = "Argentina";
+            servicio.DomicilioDestino = IngresoTexto("Por favor ingrese Domicilio de Destino");
+            servicio.LocalidadDestino = IngresoTexto("Por favor ingrese Localidad de Destino");
+            servicio.ProvinciaDestino = IngresoTexto("Por favor ingrese Provincia de Destino");
+            servicio.RegionDestino = IngresoTexto("Por favor ingrese Region de Destino");
+            servicio.PaisDestino = IngresoTexto("Por favor ingrese Pais de Destino");
+
             servicio.Peso = IngresarDecimal("Ingrese el peso");
-            //servicio.Urgente = MetodoDefinir();
-            //servicio.EntregaSucursal = MetodoDefinir();
-            //servicio.RetiroSucursal = MetodoDefinir();
+            //servicio.Urgente = Metodo a definir
+            //servicio.EntregaSucursal = Metodo a definir
+            //servicio.RetiroSucursal = Metodo a definir
             servicio.Fecha = DateTime.Now;
 
             return servicio;

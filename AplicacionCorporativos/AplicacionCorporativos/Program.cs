@@ -58,7 +58,7 @@ namespace AplicacionCorporativos
         {
             //Da de alta un nuevo servicio al usuario
             var servicio = Servicio.IngresarNuevo();
-            //Agenda.Agregar(persona);
+            AgendaServicios.Agregar(servicio);
         }
 
 
