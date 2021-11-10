@@ -51,7 +51,7 @@ namespace AplicacionCorporativos
 
         private static int IngresarEntero(string titulo)
         {
-
+            //REVISAR
             Console.WriteLine(titulo);
 
             do

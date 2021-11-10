@@ -11,7 +11,6 @@ namespace AplicacionCorporativos
     {
         static void Main(string[] args)
         {
-            //Prueba Agustín
             //TODO: DATOS QUE DEBEN VENIR DE FUENTES/TXT EXTERNOS, recordar agregar los txt de prueba al proyecto de GitHub en la carpeta bin/debug:
             //ver si es necesario crear una clase para las propiedades y otra para el archivo en lugar de hacer todo en una sola clase
             //PAISES
@@ -23,10 +22,11 @@ namespace AplicacionCorporativos
             //USUARIOS HABILITADOS - OK
 
             var usuario = AgendaUsuarios.Seleccionar();
+
             do
             {
-             usuario = AgendaUsuarios.Seleccionar();
-            
+                usuario = AgendaUsuarios.Seleccionar();
+
             } while (usuario == null);
 
             Console.WriteLine($"Bienvenido {usuario.Nombre} , su numero de cliente asociado es {usuario.ClienteAsociado}");
@@ -94,16 +94,15 @@ namespace AplicacionCorporativos
             do
             {
                 Console.WriteLine("¿Confirma Operacion de acuerdo a valor generado? Responder S/N");
-                char ingreso = char.Parse(Console.ReadLine());
-                ingreso = char.ToUpper(ingreso);
-               
+                string ingreso = Console.ReadLine();
+                ingreso.ToUpper();          
 
-                if (ingreso == 'S')
+                if (ingreso == "S")
                 {
                     AgendaServicios.Agregar(servicio);
                     break;
                 }
-                if (ingreso == 'N')
+                if (ingreso == "N")
                 {
                     break;
                 }
