@@ -94,7 +94,8 @@ namespace AplicacionCorporativos
         {
             var servicio = new Servicio();
 
-            //servicio.Trackeo = GenerarTrackeo(); corregir metodo
+            
+            servicio.Trackeo = new Random().Next(50000000, 99999999); //buscar un metodo mas prolijo
             //servicio.Estado = Metodo a definir
 
             servicio.DomicilioOrigen = IngresoTexto("Por favor ingrese Domicilio de Origen");
@@ -109,26 +110,133 @@ namespace AplicacionCorporativos
             servicio.PaisDestino = IngresoTexto("Por favor ingrese Pais de Destino");
 
             servicio.Peso = IngresarDecimal("Ingrese el peso");
-            //servicio.Urgente = Metodo a definir
-            //servicio.EntregaSucursal = Metodo a definir
-            //servicio.RetiroSucursal = Metodo a definir
+
+            //servicio.Urgente = IngresarBool(""); ver de establecer un metodo o dejar la validacion individual de abajo
+
+            bool salir = false;
+            do
+            {
+                
+
+                Console.WriteLine("Por favor determine si el servicio es o no Urgente");
+                Console.WriteLine("1 - Urgente");
+                Console.WriteLine("2 - No Urgente");
+
+                var opcion = Console.ReadLine();
+
+                switch (opcion)
+                {
+                    case "1":
+                        servicio.Urgente = true;
+                        salir = true;
+                        break;
+
+
+
+                    case "2":
+                        servicio.Urgente = false;
+                        salir = true;
+                        break;
+
+
+                    default:
+                        Console.WriteLine("No ha ingresado una opcion correcta");
+                        break;
+
+                }
+
+            } while (!salir);
+            //servicio.EntregaSucursal = IngresarBool("");
+
+            bool salir2 = false;
+            do
+            {
+
+
+                Console.WriteLine("Por favor determine si se entrega en Sucursal o por puerta");
+                Console.WriteLine("1 - Sucursal");
+                Console.WriteLine("2 - Por puerta");
+
+                var opcion = Console.ReadLine();
+
+                switch (opcion)
+                {
+                    case "1":
+                        servicio.EntregaSucursal = true;
+                        salir2 = true;
+                        break;
+                        
+
+
+
+                    case "2":
+                        servicio.EntregaSucursal = false;
+                        salir2 = true;
+                        break;
+
+
+                    default:
+                        Console.WriteLine("No ha ingresado una opcion correcta");
+                        break;
+
+                }
+
+            } while (!salir2);
+
+            //servicio.RetiroSucursal = IngresarBool("");
+
+            bool salir3 = false;
+            do
+            {
+
+
+                Console.WriteLine("Por favor determine si el retiro es en Sucursal o por Puerta");
+                Console.WriteLine("1 - Sucursal");
+                Console.WriteLine("2 - Puerta");
+
+                var opcion = Console.ReadLine();
+
+                switch (opcion)
+                {
+                    case "1":
+                        servicio.RetiroSucursal = true;
+                        salir3 = true;
+                        break;
+
+
+
+                    case "2":
+                        servicio.RetiroSucursal = false;
+                        salir3 = true;
+                        break;
+
+
+                    default:
+                        Console.WriteLine("No ha ingresado una opcion correcta");
+                        break;
+
+                }
+
+            } while (!salir3);
+
             servicio.Fecha = DateTime.Now;
 
             return servicio;
         }
 
-            /*
-            public void Mostrar()
-            {
-                Console.WriteLine($"DNI: {Dni}");
-                Console.WriteLine($"Nombre: {Nombre}, Apellido: {Apellido}");
-                Console.WriteLine($"Fecha Nacimietno: {FechaNacimiento:dd/MM/yyyy}");
+        /*
+        public void Mostrar()
+        {
+            Console.WriteLine($"DNI: {Dni}");
+            Console.WriteLine($"Nombre: {Nombre}, Apellido: {Apellido}");
+            Console.WriteLine($"Fecha Nacimietno: {FechaNacimiento:dd/MM/yyyy}");
 
-            }
+        }
 
-            */
+        */
+
         
-            
+
         public static Servicio CrearModeloBusqueda()
         {
                 var modelo = new Servicio();
