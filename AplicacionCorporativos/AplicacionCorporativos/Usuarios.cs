@@ -10,6 +10,7 @@ namespace AplicacionCorporativos
     {
         public int Dni { get; set; }
         public string Nombre { get; set; }
+        public int ClienteAsociado { get; set; }
 
 
         public Usuarios(string linea)
@@ -18,6 +19,7 @@ namespace AplicacionCorporativos
             var datos = linea.Split(';');
             Dni = int.Parse(datos[0]);
             Nombre = datos[1];
+            ClienteAsociado = int.Parse(datos[2]);
         }
 
         public Usuarios()

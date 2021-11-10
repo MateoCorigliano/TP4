@@ -12,20 +12,24 @@ namespace AplicacionCorporativos
         static void Main(string[] args)
         {
             //TODO: DATOS QUE DEBEN VENIR DE FUENTES/TXT EXTERNOS, recordar agregar los txt de prueba al proyecto de GitHub en la carpeta bin/debug:
+            //ver si es necesario crear una clase para las propiedades y otra para el archivo en lugar de hacer todo en una sola clase
             //PAISES
             //PROVINCIAS
             //LOCALIDADES
             //REGIONES (SUR, CENTRO, NORTE, METROPOLITANA (BS Y CABA))
             //CUADRO TARIFARIO
             //FACTURAS Y SUS SALDOS (CUENTA CORRIENTE)
-            //USUARIOS HABILITADOS
+            //USUARIOS HABILITADOS - OK
 
             var usuario = AgendaUsuarios.Seleccionar();
             do
             {
              usuario = AgendaUsuarios.Seleccionar();
-            } while (usuario == null);
             
+            } while (usuario == null);
+
+            Console.WriteLine($"Bienvenido {usuario.Nombre} , su numero de cliente asociado es {usuario.ClienteAsociado}");
+
 
 
             //MENU CONSOLA
