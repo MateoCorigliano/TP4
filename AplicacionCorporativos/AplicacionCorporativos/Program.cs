@@ -19,8 +19,8 @@ namespace AplicacionCorporativos
                 Console.WriteLine("MENU PRINCIPAL");
                 Console.WriteLine("--------------");
                 Console.WriteLine("1 - Solicitar un servicio de correspondencia o encomienda");
-                //Console.WriteLine("2 - Consultar el estado de un servicio");
-                //Console.WriteLine("3 - Consultar el estado de cuenta");
+                //TODO Console.WriteLine("2 - Consultar el estado de un servicio");
+                //TODO Console.WriteLine("3 - Consultar el estado de cuenta");
                 Console.WriteLine("4 - Finalizar ");
                 Console.WriteLine("Ingrese una opcion y presione [enter]");
 

@@ -95,13 +95,13 @@ namespace AplicacionCorporativos
             var servicio = new Servicio();
 
             
-            servicio.Trackeo = new Random().Next(50000000, 99999999); //buscar un metodo mas prolijo
-            //servicio.Estado = Metodo a definir
+            servicio.Trackeo = new Random().Next(50000000, 99999999); //TODO buscar un metodo mas prolijo de trackeo
+            // TODO servicio.Estado = Metodo a definir
 
             servicio.DomicilioOrigen = IngresoTexto("Por favor ingrese Domicilio de Origen");
             servicio.LocalidadOrigen = IngresoTexto("Por favor ingrese Localidad de Origen");
-            servicio.ProvinciaOrigen = IngresoTexto("Por favor ingrese Provincia de Origen");//ver de establecer una base con provincias disponibles y validar
-            servicio.RegionOrigen = IngresoTexto("Por favor ingrese Region de Origen");//ver si hay logica para autodeterminar la region segun provincia
+            servicio.ProvinciaOrigen = IngresoTexto("Por favor ingrese Provincia de Origen");//TODO ver de establecer una base con provincias disponibles y validar
+            servicio.RegionOrigen = IngresoTexto("Por favor ingrese Region de Origen");//TODOver si hay logica para autodeterminar la region segun provincia
             servicio.PaisOrigen = "Argentina";
             servicio.DomicilioDestino = IngresoTexto("Por favor ingrese Domicilio de Destino");
             servicio.LocalidadDestino = IngresoTexto("Por favor ingrese Localidad de Destino");
@@ -111,7 +111,7 @@ namespace AplicacionCorporativos
 
             servicio.Peso = IngresarDecimal("Ingrese el peso");
 
-            //servicio.Urgente = IngresarBool(""); ver de establecer un metodo o dejar la validacion individual de abajo
+            //TODO servicio.Urgente = IngresarBool(""); ver de establecer un metodo o dejar la validacion individual de abajo
 
             bool salir = false;
             do
@@ -146,7 +146,7 @@ namespace AplicacionCorporativos
                 }
 
             } while (!salir);
-            //servicio.EntregaSucursal = IngresarBool("");
+            //TODO servicio.EntregaSucursal = IngresarBool(""); ver de establecer un metodo o dejar la validacion individual de abajo
 
             bool salir2 = false;
             do
@@ -183,7 +183,7 @@ namespace AplicacionCorporativos
 
             } while (!salir2);
 
-            //servicio.RetiroSucursal = IngresarBool("");
+            //TODO servicio.RetiroSucursal = IngresarBool(""); ver de establecer un metodo o dejar la validacion individual de abajo
 
             bool salir3 = false;
             do
