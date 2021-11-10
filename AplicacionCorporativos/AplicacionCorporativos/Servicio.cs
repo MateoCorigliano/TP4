@@ -17,11 +17,13 @@ namespace AplicacionCorporativos
         public DateTime Fecha { get; set; }
         public string Estado { get; set; }
         public string DomicilioOrigen { get; set; }
+        //TODO AGREGAR PROPIEDAD ALTURA ORIGEN
         public string LocalidadOrigen { get; set; }
         public string ProvinciaOrigen { get; set; }
         public string RegionOrigen { get; set; }
         public string PaisOrigen { get; set; } //siempre sera Argentina
         public string DomicilioDestino { get; set; }
+        //TODO AGREGAR ALTURA DESTINO
         public string LocalidadDestino { get; set; }
         public string ProvinciaDestino { get; set; }
         public string RegionDestino { get; set; }
@@ -32,6 +34,7 @@ namespace AplicacionCorporativos
         public bool RetiroPuerta { get; set; }
         public int Peso { get; set; }
         public decimal ValorDeclarado { get; set; }
+
 
         /*
         public string TituloEntrada
@@ -99,12 +102,12 @@ namespace AplicacionCorporativos
             servicio.Trackeo = new Random().Next(50000000, 99999999); //TODO buscar un metodo mas prolijo de trackeo
             servicio.Estado = "RECIBIDO"; //EL ESTADO SERA ACTUALIZADO POR UNA APLICACION LOGISTICA EXTERNA A ESTA APLICACION
 
-            servicio.DomicilioOrigen = IngresoTexto("Por favor ingrese Domicilio de Origen");
+            servicio.DomicilioOrigen = IngresoTexto("Por favor ingrese Domicilio y altura de Origen");
             servicio.LocalidadOrigen = IngresoTexto("Por favor ingrese Localidad de Origen");
             servicio.ProvinciaOrigen = IngresoTexto("Por favor ingrese Provincia de Origen");//TODO ver de establecer una base con provincias disponibles y validar
-            servicio.RegionOrigen = IngresoTexto("Por favor ingrese Region de Origen");//TODOver si hay logica para autodeterminar la region segun provincia
+            servicio.RegionOrigen = IngresoTexto("Por favor ingrese Region de Origen");//TODO ver si hay logica para autodeterminar la region segun provincia
             servicio.PaisOrigen = "ARGENTINA";
-            servicio.DomicilioDestino = IngresoTexto("Por favor ingrese Domicilio de Destino");
+            servicio.DomicilioDestino = IngresoTexto("Por favor ingrese Domicilio y altura de Destino");
             servicio.LocalidadDestino = IngresoTexto("Por favor ingrese Localidad de Destino");
             servicio.ProvinciaDestino = IngresoTexto("Por favor ingrese Provincia de Destino");
             servicio.RegionDestino = IngresoTexto("Por favor ingrese Region de Destino");
@@ -549,8 +552,6 @@ namespace AplicacionCorporativos
                 string ingreso1 = ingreso.ToUpper();
                 return ingreso1;
             } while (true);
-
-           
 
         }
         

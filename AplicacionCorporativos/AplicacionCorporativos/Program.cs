@@ -95,14 +95,14 @@ namespace AplicacionCorporativos
             {
                 Console.WriteLine("¿Confirma Operacion de acuerdo a valor generado? Responder S/N");
                 string ingreso = Console.ReadLine();
-                ingreso.ToUpper();          
+                string opcion = ingreso.ToUpper();          
 
-                if (ingreso == "S")
+                if (opcion == "S")
                 {
                     AgendaServicios.Agregar(servicio);
                     break;
                 }
-                if (ingreso == "N")
+                if (opcion == "N")
                 {
                     break;
                 }
