@@ -228,10 +228,153 @@ namespace AplicacionCorporativos
 
             //comienzo logica para calcular costo
 
-            if (servicio.Peso <30 && servicio.PaisDestino == servicio.PaisOrigen)
+            //primero valido en que rango de peso se encuentra luego la distancia de entrega
+
+            //peso hasta 500gr:
+
+            if (servicio.Peso < 1) //TODO: ver por que no deja utilizar el operador '<' cuando es decimal, sino vamos a tener que utilizar INT y que ingresen gramos
             {
-                servicio.Costo = servicio.Costo + 10; //TODO en este caso el costo en realidad es variable, deberia venir de una fuente de datos
+                if(servicio.PaisDestino == servicio.PaisOrigen)
+                { 
+                    if(servicio.RegionDestino == servicio.RegionOrigen)
+                    {
+                        if(servicio.ProvinciaDestino == servicio.ProvinciaOrigen)
+                        {
+                            if(servicio.LocalidadDestino == servicio.LocalidadOrigen)
+                            {
+                                servicio.Costo = servicio.Costo + 10;
+                            }
+                            else
+                            {
+                                servicio.Costo = servicio.Costo + 20;
+                            }
+                        }
+                        else
+                        {
+                            servicio.Costo = servicio.Costo + 30;
+                        }
+                    }
+                    else
+                    {
+                        servicio.Costo = servicio.Costo + 40;
+                    }
+
+                }
+                else
+                {
+                    //TODO: aqui se deberia contemplar el calculo para servicios internacionales
+                }
+
             }
+
+            //peso hasta 10kg
+            if (servicio.Peso < 10 && servicio.Peso >= 1) 
+            {
+                if (servicio.PaisDestino == servicio.PaisOrigen)
+                {
+                    if (servicio.RegionDestino == servicio.RegionOrigen)
+                    {
+                        if (servicio.ProvinciaDestino == servicio.ProvinciaOrigen)
+                        {
+                            if (servicio.LocalidadDestino == servicio.LocalidadOrigen)
+                            {
+                                servicio.Costo = servicio.Costo + 10;
+                            }
+                            else
+                            {
+                                servicio.Costo = servicio.Costo + 20;
+                            }
+                        }
+                        else
+                        {
+                            servicio.Costo = servicio.Costo + 30;
+                        }
+                    }
+                    else
+                    {
+                        servicio.Costo = servicio.Costo + 40;
+                    }
+
+                }
+                else
+                {
+                    //TODO: aqui se deberia contemplar el calculo para servicios internacionales
+                }
+
+            }
+
+            //peso hasta 20kg
+            if (servicio.Peso < 20 && servicio.Peso >= 10)
+            {
+                if (servicio.PaisDestino == servicio.PaisOrigen)
+                {
+                    if (servicio.RegionDestino == servicio.RegionOrigen)
+                    {
+                        if (servicio.ProvinciaDestino == servicio.ProvinciaOrigen)
+                        {
+                            if (servicio.LocalidadDestino == servicio.LocalidadOrigen)
+                            {
+                                servicio.Costo = servicio.Costo + 10;
+                            }
+                            else
+                            {
+                                servicio.Costo = servicio.Costo + 20;
+                            }
+                        }
+                        else
+                        {
+                            servicio.Costo = servicio.Costo + 30;
+                        }
+                    }
+                    else
+                    {
+                        servicio.Costo = servicio.Costo + 40;
+                    }
+
+                }
+                else
+                {
+                    //TODO: aqui se deberia contemplar el calculo para servicios internacionales
+                }
+
+            }
+
+            //peso hasta 30kg
+            if (servicio.Peso < 30 && servicio.Peso >= 20)
+            {
+                if (servicio.PaisDestino == servicio.PaisOrigen)
+                {
+                    if (servicio.RegionDestino == servicio.RegionOrigen)
+                    {
+                        if (servicio.ProvinciaDestino == servicio.ProvinciaOrigen)
+                        {
+                            if (servicio.LocalidadDestino == servicio.LocalidadOrigen)
+                            {
+                                servicio.Costo = servicio.Costo + 10;
+                            }
+                            else
+                            {
+                                servicio.Costo = servicio.Costo + 20;
+                            }
+                        }
+                        else
+                        {
+                            servicio.Costo = servicio.Costo + 30;
+                        }
+                    }
+                    else
+                    {
+                        servicio.Costo = servicio.Costo + 40;
+                    }
+
+                }
+                else
+                {
+                    //TODO: aqui se deberia contemplar el calculo para servicios internacionales
+                }
+
+            }
+
             if (servicio.Urgente == true)
             {
                 servicio.Costo = servicio.Costo + 10;
