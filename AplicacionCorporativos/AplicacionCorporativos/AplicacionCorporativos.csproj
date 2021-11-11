@@ -60,6 +60,8 @@
   <ItemGroup>
     <Compile Include="AgendaUsuarios.cs" />
     <Compile Include="AgendaServicios.cs" />
+    <Compile Include="AgendaCuentas.cs" />
+    <Compile Include="Cuenta.cs" />
     <Compile Include="Cliente.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

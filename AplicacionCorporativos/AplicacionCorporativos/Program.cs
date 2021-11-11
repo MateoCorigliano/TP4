@@ -29,7 +29,7 @@ namespace AplicacionCorporativos
 
             } while (usuario == null);
 
-            Console.WriteLine($"Bienvenido {usuario.Nombre} , su numero de cliente asociado es {usuario.ClienteAsociado}");
+            Console.WriteLine($"Bienvenido {usuario.Nombre}, su numero de cliente asociado es {usuario.ClienteAsociado}");
 
 
 
@@ -42,7 +42,7 @@ namespace AplicacionCorporativos
                     Console.WriteLine("--------------");
                     Console.WriteLine("1 - Solicitar un servicio de correspondencia o encomienda");
                     Console.WriteLine("2 - Consultar el estado de un servicio");
-                    //TODO Console.WriteLine("3 - Consultar el estado de cuenta");
+                    Console.WriteLine("3 - Consultar el estado de cuenta");
                     Console.WriteLine("4 - Finalizar ");
                     Console.WriteLine("Ingrese una opcion y presione [enter]");
 
@@ -57,11 +57,11 @@ namespace AplicacionCorporativos
                         case "2":
                             ConsultaServicio();
                             break;
-                        /*
-                    case "3":
-                        ConsultaCuenta();
-                        break;
-                        */
+                        
+                        case "3":
+                            ConsultaCuenta(usuario.ClienteAsociado);
+                            break;
+                        
 
                         case "4":
                             salir = true;
@@ -125,17 +125,17 @@ namespace AplicacionCorporativos
 
         }
 
-        /*
-        private static void ConsultaCuenta()
+
+        private static void ConsultaCuenta(int nroCliente)
         {
-         var persona = Agenda.Seleccionar();
-            if (persona != null)
+            var cuenta = AgendaCuentas.Seleccionar(nroCliente);
+            if (cuenta != null)
             {
-                persona.Mostrar();
+                cuenta.Mostrar();
             }
             
         }
-        */
+        
 
         
 

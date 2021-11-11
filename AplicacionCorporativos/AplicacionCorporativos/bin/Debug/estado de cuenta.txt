@@ -1,2 +1,2 @@
-numero cliente;nro factura;saldo
 5555;12;30000
+1234;22;3000
