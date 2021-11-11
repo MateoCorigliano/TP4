@@ -43,7 +43,7 @@ namespace AplicacionCorporativos
             var modelo = new Usuarios();
 
 
-            modelo.Dni = IngresarEntero("Por favor ingrese el nro de dni autorizado");
+            modelo.Dni = IngresarEntero("Por favor ingresar el numero de dni autorizado para continuar");
 
 
             return modelo;

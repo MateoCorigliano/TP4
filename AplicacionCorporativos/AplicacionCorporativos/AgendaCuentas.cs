@@ -58,7 +58,7 @@ namespace AplicacionCorporativos
 
             if (encontre == false)
             {
-                Console.WriteLine("No se ha encontrado el usuario ingresado");
+                Console.WriteLine("No se encontraron registros");
             }
         }
 

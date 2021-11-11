@@ -18,16 +18,17 @@ namespace AplicacionCorporativos
             //LOCALIDADES
             //REGIONES (SUR, CENTRO, NORTE, METROPOLITANA (BS Y CABA))
             //CUADRO TARIFARIO
-            //FACTURAS Y SUS SALDOS (CUENTA CORRIENTE)
-            //USUARIOS HABILITADOS - OK
 
-            Console.Clear();
+            Console.WriteLine("");
+            Console.WriteLine("APLICACION CLIENTES CORPORATIVOS");
+            Console.WriteLine("");
 
             bool seguir = true;
             int dni;
             string nombre = "";
             int nroCliente = 0;
 
+            //VALIDACION USAURIOS REGISTRADOS
             do
             {
                 var usuario = AgendaUsuarios.Seleccionar();
@@ -42,7 +43,8 @@ namespace AplicacionCorporativos
 
             } while (seguir);
 
-            Console.WriteLine($"Bienvenido {nombre}, su numero de cliente asociado es {nroCliente}");
+            Console.Clear();
+            Console.WriteLine($"Bienvenid@ {nombre}, su numero de cliente asociado es {nroCliente}");
 
 
 
@@ -51,8 +53,9 @@ namespace AplicacionCorporativos
             bool salir = false;
                 do
                 {
+                    Console.WriteLine("");
                     Console.WriteLine("MENU PRINCIPAL");
-                    Console.WriteLine("--------------");
+                    Console.WriteLine("");
                     Console.WriteLine("1 - Solicitar un servicio de correspondencia o encomienda");
                     Console.WriteLine("2 - Consultar el estado de un servicio");
                     Console.WriteLine("3 - Consultar el estado de cuenta");
@@ -64,15 +67,18 @@ namespace AplicacionCorporativos
                     switch (opcion)
                     {
                         case "1":
-                            AltaServicio();
+                        Console.Clear();
+                        AltaServicio();
                             break;
 
                         case "2":
-                            ConsultaServicio();
+                        Console.Clear();
+                        ConsultaServicio();
                             break;
                         
                         case "3":
-                            ConsultaCuenta(nroCliente);
+                        Console.Clear();
+                        ConsultaCuenta(nroCliente);
                             break;
                         
 
@@ -99,7 +105,7 @@ namespace AplicacionCorporativos
         {
             //Da de alta un nuevo servicio al usuario
             var servicio = Servicio.IngresarNuevo();
-
+            
             Console.WriteLine($"El costo total por el servicio es: {servicio.Costo}");
 
             //confirmacion se servicio:
@@ -126,6 +132,7 @@ namespace AplicacionCorporativos
             } while (true);
             Console.WriteLine("Pulse una tecla para continuar");
             Console.ReadKey();
+            Console.Clear();
         }
 
 
@@ -135,10 +142,12 @@ namespace AplicacionCorporativos
             var servicio = AgendaServicios.Seleccionar();
             if (servicio != null)
             {
+                Console.Clear();
                 servicio.Mostrar();
             }
             Console.WriteLine("Pulse una tecla para continuar");
             Console.ReadKey();
+            Console.Clear();
         }
 
 
@@ -147,6 +156,7 @@ namespace AplicacionCorporativos
             AgendaCuentas.Seleccionar(nroCliente);
             Console.WriteLine("Pulse una tecla para continuar");
             Console.ReadKey();
+            Console.Clear();
         }
         
 

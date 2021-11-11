@@ -74,6 +74,7 @@ namespace AplicacionCorporativos
             Peso = int.Parse(datos[16]);
             Fecha = DateTime.Parse(datos[17]);
             ValorDeclarado = decimal.Parse(datos[18]);
+            //TODO: agregar el nro de cliente para traer en el estado de cuenta todos los servicios pendientes del cliente asociado
 
         }
         //fin constructores
@@ -93,7 +94,7 @@ namespace AplicacionCorporativos
         }
         */
 
-
+        
         public static Servicio IngresarNuevo()
         {
             var servicio = new Servicio();
@@ -245,21 +246,25 @@ namespace AplicacionCorporativos
                         {
                             if(servicio.LocalidadDestino == servicio.LocalidadOrigen)
                             {
-                                servicio.Costo = servicio.Costo + 10;
+                                decimal precio = ConsultaTarifaLocal(servicio.Peso);
+                                servicio.Costo = servicio.Costo + precio;
                             }
                             else
                             {
-                                servicio.Costo = servicio.Costo + 20;
+                                decimal precio = ConsultaTarifaProvincial(servicio.Peso);
+                                servicio.Costo = servicio.Costo + precio;
                             }
                         }
                         else
                         {
-                            servicio.Costo = servicio.Costo + 30;
+                            decimal precio = ConsultaTarifaRegional(servicio.Peso);
+                            servicio.Costo = servicio.Costo + precio;
                         }
                     }
                     else
                     {
-                        servicio.Costo = servicio.Costo + 40;
+                        decimal precio = ConsultaTarifaNacional(servicio.Peso);
+                        servicio.Costo = servicio.Costo + precio;
                     }
 
                 }
@@ -271,7 +276,7 @@ namespace AplicacionCorporativos
             }
 
             //peso hasta 10kg
-            if (servicio.Peso < 10 && servicio.Peso >= 0.5) 
+            if (servicio.Peso < 10000 && servicio.Peso >= 500) 
             {
                 if (servicio.PaisDestino == servicio.PaisOrigen)
                 {
@@ -281,21 +286,25 @@ namespace AplicacionCorporativos
                         {
                             if (servicio.LocalidadDestino == servicio.LocalidadOrigen)
                             {
-                                servicio.Costo = servicio.Costo + 10;
+                                decimal precio = ConsultaTarifaLocal(servicio.Peso);
+                                servicio.Costo = servicio.Costo + precio;
                             }
                             else
                             {
-                                servicio.Costo = servicio.Costo + 20;
+                                decimal precio = ConsultaTarifaProvincial(servicio.Peso);
+                                servicio.Costo = servicio.Costo + precio;
                             }
                         }
                         else
                         {
-                            servicio.Costo = servicio.Costo + 30;
+                            decimal precio = ConsultaTarifaRegional(servicio.Peso);
+                            servicio.Costo = servicio.Costo + precio;
                         }
                     }
                     else
                     {
-                        servicio.Costo = servicio.Costo + 40;
+                        decimal precio = ConsultaTarifaNacional(servicio.Peso);
+                        servicio.Costo = servicio.Costo + precio;
                     }
 
                 }
@@ -307,7 +316,7 @@ namespace AplicacionCorporativos
             }
 
             //peso hasta 20kg
-            if (servicio.Peso < 20 && servicio.Peso >= 10)
+            if (servicio.Peso < 20000 && servicio.Peso >= 10000)
             {
                 if (servicio.PaisDestino == servicio.PaisOrigen)
                 {
@@ -317,21 +326,25 @@ namespace AplicacionCorporativos
                         {
                             if (servicio.LocalidadDestino == servicio.LocalidadOrigen)
                             {
-                                servicio.Costo = servicio.Costo + 10;
+                                decimal precio = ConsultaTarifaLocal(servicio.Peso);
+                                servicio.Costo = servicio.Costo + precio;
                             }
                             else
                             {
-                                servicio.Costo = servicio.Costo + 20;
+                                decimal precio = ConsultaTarifaProvincial(servicio.Peso);
+                                servicio.Costo = servicio.Costo + precio;
                             }
                         }
                         else
                         {
-                            servicio.Costo = servicio.Costo + 30;
+                            decimal precio = ConsultaTarifaRegional(servicio.Peso);
+                            servicio.Costo = servicio.Costo + precio;
                         }
                     }
                     else
                     {
-                        servicio.Costo = servicio.Costo + 40;
+                        decimal precio = ConsultaTarifaNacional(servicio.Peso);
+                        servicio.Costo = servicio.Costo + precio;
                     }
 
                 }
@@ -343,7 +356,7 @@ namespace AplicacionCorporativos
             }
 
             //peso hasta 30kg
-            if (servicio.Peso <= 30 && servicio.Peso >= 20)
+            if (servicio.Peso <= 30000 && servicio.Peso >= 20000)
             {
                 if (servicio.PaisDestino == servicio.PaisOrigen)
                 {
@@ -353,21 +366,25 @@ namespace AplicacionCorporativos
                         {
                             if (servicio.LocalidadDestino == servicio.LocalidadOrigen)
                             {
-                                servicio.Costo = servicio.Costo + 10;
+                                decimal precio = ConsultaTarifaLocal(servicio.Peso);
+                                servicio.Costo = servicio.Costo + precio;
                             }
                             else
                             {
-                                servicio.Costo = servicio.Costo + 20;
+                                decimal precio = ConsultaTarifaProvincial(servicio.Peso);
+                                servicio.Costo = servicio.Costo + precio;
                             }
                         }
                         else
                         {
-                            servicio.Costo = servicio.Costo + 30;
+                            decimal precio = ConsultaTarifaRegional(servicio.Peso);
+                            servicio.Costo = servicio.Costo + precio;
                         }
                     }
                     else
                     {
-                        servicio.Costo = servicio.Costo + 40;
+                        decimal precio = ConsultaTarifaNacional(servicio.Peso);
+                        servicio.Costo = servicio.Costo + precio;
                     }
 
                 }
@@ -380,22 +397,77 @@ namespace AplicacionCorporativos
 
             if (servicio.Urgente == true)
             {
-                servicio.Costo = servicio.Costo + 10;
+
+
+                decimal cargo = ConsultaCargoUrgente(servicio.Urgente);
+                servicio.Costo = servicio.Costo + cargo;
+               
             }
             if (servicio.EntregaPuerta == true)
             {
-                servicio.Costo = servicio.Costo + 10;
+                decimal cargo = ConsultaCargoEntrega(servicio.EntregaPuerta);
+                servicio.Costo = servicio.Costo + cargo;
             }
             if (servicio.RetiroPuerta == true)
             {
-                servicio.Costo = servicio.Costo + 10;
+                decimal cargo = ConsultaCargoRetiro(servicio.RetiroPuerta);
+                servicio.Costo = servicio.Costo + cargo;
             }
 
 
             return servicio;
         }
 
-        
+        private static decimal ConsultaTarifaLocal(decimal pesoLimite)
+        {
+            decimal precio = AgendaTarifasNacionales.SeleccionarPrecioLocal(pesoLimite);
+            return precio;
+        }
+
+        private static decimal ConsultaTarifaProvincial(decimal pesoLimite)
+        {
+            decimal precio = AgendaTarifasNacionales.SeleccionarPrecioProvincial(pesoLimite);
+            return precio;
+        }
+
+        private static decimal ConsultaTarifaRegional(decimal pesoLimite)
+        {
+            decimal precio = AgendaTarifasNacionales.SeleccionarPrecioRegional(pesoLimite);
+            return precio;
+        }
+
+        private static decimal ConsultaTarifaNacional(decimal pesoLimite)
+        {
+            decimal precio = AgendaTarifasNacionales.SeleccionarPrecioNacional(pesoLimite);
+            return precio;
+        }
+
+        private static decimal ConsultaCargoUrgente(bool entrada)
+        {
+            decimal cargo = AgendaTarifasAdicionales.SeleccionarCargoUrgente(entrada);
+            return cargo;
+        }
+
+        private static decimal ConsultaTopeUrgente(bool entrada)
+        {
+            decimal cargo = AgendaTarifasAdicionales.SeleccionarTopeUrgente(entrada);
+            return cargo;
+        }
+
+        private static decimal ConsultaCargoEntrega(bool entrada)
+        {
+            decimal cargo = AgendaTarifasAdicionales.SeleccionarCargoEntrega(entrada);
+            return cargo;
+        }
+
+        private static decimal ConsultaCargoRetiro(bool entrada)
+        {
+            decimal cargo = AgendaTarifasAdicionales.SeleccionarCargoRetiro(entrada);
+            return cargo;
+        }
+
+
+
         public void Mostrar()
         {
             Console.WriteLine($"Trackeo: {Trackeo}");

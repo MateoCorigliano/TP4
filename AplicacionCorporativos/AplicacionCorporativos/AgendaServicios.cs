@@ -59,7 +59,7 @@ namespace AplicacionCorporativos
                     return servicio;
                 }
             }
-            Console.WriteLine("No se ha encontrado la persona ingresada");
+            Console.WriteLine("No se ha encontrado el servicio");
             return null;
         }
 

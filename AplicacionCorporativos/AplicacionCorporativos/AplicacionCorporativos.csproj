@@ -58,14 +58,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AgendaTarifasAdicionales.cs" />
+    <Compile Include="AgendaTarifasNacionales.cs" />
     <Compile Include="AgendaUsuarios.cs" />
     <Compile Include="AgendaServicios.cs" />
     <Compile Include="AgendaCuentas.cs" />
     <Compile Include="Cuenta.cs" />
-    <Compile Include="Cliente.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Servicio.cs" />
+    <Compile Include="TarifasAdicionales.cs" />
+    <Compile Include="TarifasNacionales.cs" />
     <Compile Include="Usuarios.cs" />
   </ItemGroup>
   <ItemGroup>
