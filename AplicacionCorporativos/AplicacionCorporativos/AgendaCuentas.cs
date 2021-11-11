@@ -66,18 +66,28 @@ namespace AplicacionCorporativos
         {
             var modelo = Cuenta.CrearModeloBusqueda(nroCliente);
             decimal total = 0;
+            bool encontre = false;
 
+            
             foreach (var cuentas in entradas)
             {
-                var saldo = cuentas.Saldo;
-                
-                total = total + saldo;
-                
+                if (cuentas.CoincideCon(modelo))
+                {
+                    var saldo = cuentas.Saldo;
+
+                    total = total + saldo;
+                    encontre = true;
+                }
 
 
             }
 
             Console.WriteLine($"Saldo: ${total}");
+
+            if (encontre == false)
+            {
+                Console.WriteLine("No se encontraron registros");
+            }
         }
 
     }
