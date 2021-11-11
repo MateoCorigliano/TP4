@@ -147,7 +147,10 @@ namespace AplicacionCorporativos
 
         private static void ConsultaCuenta(int nroCliente)
         {
+            Console.WriteLine("ESTADO DE FACTURACION:");
             AgendaCuentas.Seleccionar(nroCliente);
+            Console.WriteLine("SERVICIOS PENDIENTES:");
+            AgendaServicios.Seleccionar2(nroCliente);
             Console.WriteLine("Pulse una tecla para continuar");
             Console.ReadKey();
             Console.Clear();

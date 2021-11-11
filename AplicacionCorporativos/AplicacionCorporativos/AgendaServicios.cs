@@ -63,6 +63,28 @@ namespace AplicacionCorporativos
             return null;
         }
 
+        public static void Seleccionar2(int nroCliente)
+        {
+            var modelo = Servicio.ModeloBusqueda2(nroCliente);
+
+            bool encontre = false;
+
+            foreach (var servicio in entradas.Values)
+            {
+               
+                    Console.WriteLine($"Nro Trackeo:{servicio.Trackeo}\n" +
+                        $"Estado: {servicio.Estado}\n" +
+                        $"Fecha: {servicio.Fecha}\n");
+                    encontre = true;
+                
+            }
+
+            if (encontre == false)
+            {
+                Console.WriteLine("No se encontraron registros");
+            }
+        }
+
         public static void Grabar()
         {
             using (var writer = new StreamWriter(nombreArchivo, append: false))
