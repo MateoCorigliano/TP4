@@ -38,14 +38,18 @@ namespace AplicacionCorporativos
 
         }
 
-        public static decimal SeleccionarPrecioLimitrofe(decimal pesoLimite)
+        public static decimal SeleccionarPrecioLimitrofe(int pesoLimite)
         {
             var modelo = TarifasInternacionales.CrearModeloBusqueda(pesoLimite);
 
             foreach (var tarifas in entradas.Values)
             {
 
-                return tarifas.PrecioLimitrofe;
+
+                if (tarifas.CoincideCon(modelo))
+                {
+                    return tarifas.PrecioLimitrofe;
+                }
 
             }
 
@@ -53,14 +57,18 @@ namespace AplicacionCorporativos
 
         }
 
-        public static decimal SeleccionarPrecioSudamerica(decimal pesoLimite)
+        public static decimal SeleccionarPrecioSudamerica(int pesoLimite)
         {
             var modelo = TarifasInternacionales.CrearModeloBusqueda(pesoLimite);
 
             foreach (var tarifas in entradas.Values)
             {
 
-                return tarifas.PrecioSudamerica;
+
+                if (tarifas.CoincideCon(modelo))
+                {
+                    return tarifas.PrecioSudamerica;
+                }
 
             }
 

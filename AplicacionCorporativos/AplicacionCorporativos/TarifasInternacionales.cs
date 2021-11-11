@@ -12,7 +12,7 @@ namespace AplicacionCorporativos
 
         //de acuerdo a indicaciones de Andres se acota a paises limitrofes o america latina
 
-        public decimal PesoLimite { get; set; }
+        public int PesoLimite { get; set; }
         public decimal PrecioLimitrofe { get; set; }
         public decimal PrecioSudamerica { get; set; }
 
@@ -24,14 +24,14 @@ namespace AplicacionCorporativos
         public TarifasInternacionales(string linea)
         {
             var datos = linea.Split(';');
-            PesoLimite = decimal.Parse(datos[0]);
+            PesoLimite = int.Parse(datos[0]);
             PrecioLimitrofe = decimal.Parse(datos[1]);
             PrecioSudamerica = decimal.Parse(datos[2]);
 
         }
 
 
-        public static TarifasInternacionales CrearModeloBusqueda(decimal pesoLimite)
+        public static TarifasInternacionales CrearModeloBusqueda(int pesoLimite)
         {
             var modelo = new TarifasInternacionales();
 
@@ -41,6 +41,15 @@ namespace AplicacionCorporativos
             return modelo;
         }
 
+        public bool CoincideCon(TarifasInternacionales modelo)
+        {
+            if (PesoLimite < modelo.PesoLimite)
+            {
+                return false;
+            }
+
+            return true;
+        }
 
 
     }

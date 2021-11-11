@@ -38,29 +38,36 @@ namespace AplicacionCorporativos
 
         }
 
-        public static decimal SeleccionarPrecioLocal(decimal pesoLimite)
+        public static decimal SeleccionarPrecioLocal(int pesoLimite)
         {
             var modelo = TarifasNacionales.CrearModeloBusqueda(pesoLimite);
 
             foreach (var tarifas in entradas.Values)
             {
-                
+
+                if (tarifas.CoincideCon(modelo))
+                {
                     return tarifas.PrecioLocal;
+                }
+                
                 
             }
 
-            return 0;
+           return 0;
 
         }
 
-        public static decimal SeleccionarPrecioProvincial(decimal pesoLimite)
+        public static decimal SeleccionarPrecioProvincial(int pesoLimite)
         {
             var modelo = TarifasNacionales.CrearModeloBusqueda(pesoLimite);
 
             foreach (var tarifas in entradas.Values)
             {
 
-                return tarifas.PrecioProvincial;
+                if (tarifas.CoincideCon(modelo))
+                {
+                    return tarifas.PrecioProvincial;
+                }
 
             }
 
@@ -68,14 +75,18 @@ namespace AplicacionCorporativos
 
         }
 
-        public static decimal SeleccionarPrecioRegional(decimal pesoLimite)
+        public static decimal SeleccionarPrecioRegional(int pesoLimite)
         {
             var modelo = TarifasNacionales.CrearModeloBusqueda(pesoLimite);
 
             foreach (var tarifas in entradas.Values)
             {
 
-                return tarifas.PrecioRegional;
+
+                if (tarifas.CoincideCon(modelo))
+                {
+                    return tarifas.PrecioRegional;
+                }
 
             }
 
@@ -83,14 +94,18 @@ namespace AplicacionCorporativos
 
         }
 
-        public static decimal SeleccionarPrecioNacional(decimal pesoLimite)
+        public static decimal SeleccionarPrecioNacional(int pesoLimite)
         {
             var modelo = TarifasNacionales.CrearModeloBusqueda(pesoLimite);
 
             foreach (var tarifas in entradas.Values)
             {
 
-                return tarifas.PrecioNacional;
+
+                if (tarifas.CoincideCon(modelo))
+                {
+                    return tarifas.PrecioNacional;
+                }
 
             }
 

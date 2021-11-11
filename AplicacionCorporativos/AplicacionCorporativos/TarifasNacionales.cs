@@ -25,7 +25,7 @@ namespace AplicacionCorporativos
         public TarifasNacionales(string linea)
         {
             var datos = linea.Split(';');
-            PesoLimite = decimal.Parse(datos[0]);
+            PesoLimite = int.Parse(datos[0]);
             PrecioLocal = decimal.Parse(datos[1]);
             PrecioProvincial = decimal.Parse(datos[2]);
             PrecioRegional = decimal.Parse(datos[3]);
@@ -34,7 +34,7 @@ namespace AplicacionCorporativos
         }
         
         
-        public static TarifasNacionales CrearModeloBusqueda(decimal pesoLimite)
+        public static TarifasNacionales CrearModeloBusqueda(int pesoLimite)
         {
             var modelo = new TarifasNacionales();
 
@@ -44,9 +44,17 @@ namespace AplicacionCorporativos
             return modelo;
         }
 
-        
+
+        public bool CoincideCon(TarifasNacionales modelo)
+        {
+            if (PesoLimite < modelo.PesoLimite)
+            {
+                return false;
+            }
+
+            return true;
+        }
 
 
-        
     }
 }

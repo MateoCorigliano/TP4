@@ -426,13 +426,15 @@ namespace AplicacionCorporativos
 
             if(servicio.PaisDestino == "ARGENTINA")
             { 
-            servicio.LocalidadDestino = IngresoTexto("Por favor ingrese Provincia de Destino");
+            servicio.LocalidadDestino = IngresoTexto("Por favor ingrese Localidad de Destino");
+
+                //ingrso provincia destino
                 bool salir6 = false;
                 do
                 {
 
                     Console.WriteLine("");
-                    Console.WriteLine("Por favor ingrese la provincia de origen");
+                    Console.WriteLine("Por favor ingrese la Provincia de Destino");
                     Console.WriteLine("");
                     Console.WriteLine("1 - BUENOS AIRES");
                     Console.WriteLine("2 - CABA");
@@ -826,6 +828,7 @@ namespace AplicacionCorporativos
                             if (servicio.LocalidadDestino == servicio.LocalidadOrigen)
                             {
                                 decimal precio = ConsultaTarifaLocal(servicio.Peso);
+
                                 servicio.Costo = servicio.Costo + precio;
                             }
                             else
@@ -854,11 +857,62 @@ namespace AplicacionCorporativos
                     {
                         decimal precio = ConsultaTarifaLimitrofe(servicio.Peso);
                         servicio.Costo = servicio.Costo + precio;
+
+                        if ("METROPOLTANA" == servicio.RegionOrigen)
+                        {
+                            if ("CABA" == servicio.ProvinciaOrigen)
+                            {
+                                if ("CABA" == servicio.LocalidadOrigen)
+                                {
+                                    precio = ConsultaTarifaLocal(servicio.Peso);
+
+                                    servicio.Costo = servicio.Costo + precio;
+                                }
+                                else
+                                {
+                                    precio = ConsultaTarifaProvincial(servicio.Peso);
+                                    servicio.Costo = servicio.Costo + precio;
+                                }
+                            }
+                            else
+                            {
+                                precio = ConsultaTarifaRegional(servicio.Peso);
+                                servicio.Costo = servicio.Costo + precio;
+                            }
+                        }
+                        else
+                        {
+                            precio = ConsultaTarifaNacional(servicio.Peso);
+                            servicio.Costo = servicio.Costo + precio;
+                        }
                     }
                     else
                     {
                         decimal precio = ConsultaTarifaSudamerica(servicio.Peso);
                         servicio.Costo = servicio.Costo + precio;
+
+                        if ("METROPOLTANA" == servicio.RegionOrigen)
+                        {
+                            if ("CABA" == servicio.ProvinciaOrigen)
+                            {
+                                if ("CABA" == servicio.LocalidadOrigen)
+                                {
+                                    precio = ConsultaTarifaLocal(servicio.Peso);
+
+                                    servicio.Costo = servicio.Costo + precio;
+                                }
+                                else
+                                {
+                                    precio = ConsultaTarifaProvincial(servicio.Peso);
+                                    servicio.Costo = servicio.Costo + precio;
+                                }
+                            }
+                            else
+                            {
+                                precio = ConsultaTarifaRegional(servicio.Peso);
+                                servicio.Costo = servicio.Costo + precio;
+                            }
+                        }
                     }
                 }
 
@@ -988,37 +1042,37 @@ namespace AplicacionCorporativos
             return servicio;
         }
 
-        private static decimal ConsultaTarifaLocal(decimal pesoLimite)
+        private static decimal ConsultaTarifaLocal(int pesoLimite)
         {
             decimal precio = AgendaTarifasNacionales.SeleccionarPrecioLocal(pesoLimite);
             return precio;
         }
 
-        private static decimal ConsultaTarifaProvincial(decimal pesoLimite)
+        private static decimal ConsultaTarifaProvincial(int pesoLimite)
         {
             decimal precio = AgendaTarifasNacionales.SeleccionarPrecioProvincial(pesoLimite);
             return precio;
         }
 
-        private static decimal ConsultaTarifaRegional(decimal pesoLimite)
+        private static decimal ConsultaTarifaRegional(int pesoLimite)
         {
             decimal precio = AgendaTarifasNacionales.SeleccionarPrecioRegional(pesoLimite);
             return precio;
         }
 
-        private static decimal ConsultaTarifaNacional(decimal pesoLimite)
+        private static decimal ConsultaTarifaNacional(int pesoLimite)
         {
             decimal precio = AgendaTarifasNacionales.SeleccionarPrecioNacional(pesoLimite);
             return precio;
         }
 
-        private static decimal ConsultaTarifaLimitrofe(decimal pesoLimite)
+        private static decimal ConsultaTarifaLimitrofe(int pesoLimite)
         {
             decimal precio = AgendaTarifasInternacionales.SeleccionarPrecioLimitrofe(pesoLimite);
             return precio;
         }
 
-        private static decimal ConsultaTarifaSudamerica(decimal pesoLimite)
+        private static decimal ConsultaTarifaSudamerica(int pesoLimite)
         {
             decimal precio = AgendaTarifasInternacionales.SeleccionarPrecioSudamerica(pesoLimite);
             return precio;
