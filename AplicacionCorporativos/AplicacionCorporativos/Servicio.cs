@@ -21,7 +21,7 @@ namespace AplicacionCorporativos
         public string LocalidadOrigen { get; set; }
         public string ProvinciaOrigen { get; set; }
         public string RegionOrigen { get; set; }
-        public string PaisOrigen { get; set; } //siempre sera Argentina
+        public string PaisOrigen { get; set; }
         public string DomicilioDestino { get; set; }
         //TODO AGREGAR ALTURA DESTINO
         public string LocalidadDestino { get; set; }
@@ -105,10 +105,211 @@ namespace AplicacionCorporativos
 
             servicio.DomicilioOrigen = IngresoTexto("Por favor ingrese Domicilio y altura de Origen");
             servicio.LocalidadOrigen = IngresoTexto("Por favor ingrese Localidad de Origen");
-            servicio.ProvinciaOrigen = IngresoTexto("Por favor ingrese Provincia de Origen");//TODO ver de establecer una base con provincias disponibles y validar
             
+            bool salir5 = false;
+            do
+            {
+
+                Console.WriteLine("");
+                Console.WriteLine("Por favor ingrese la provincia de origen");
+                Console.WriteLine("");
+                Console.WriteLine("1 - BUENOS AIRES");
+                Console.WriteLine("2 - CABA");
+                Console.WriteLine("3 - CATAMARCA");
+                Console.WriteLine("4 - CHACO");
+                Console.WriteLine("5 - CHUBUT");
+                Console.WriteLine("6 - CORDOBA");
+                Console.WriteLine("7 - CORRIENTES");
+                Console.WriteLine("8 - ENTRE RIOS");
+                Console.WriteLine("9 - FORMOSA");
+                Console.WriteLine("10 - JUJUY");
+                Console.WriteLine("11 - LA PAMPA");
+                Console.WriteLine("12 - LA RIOJA");
+                Console.WriteLine("13 - MENDOZA");
+                Console.WriteLine("14 - MISIONES");
+                Console.WriteLine("15 - NEUQUEN");
+                Console.WriteLine("16 - RIO NEGRO");
+                Console.WriteLine("17 - SALTA");
+                Console.WriteLine("18 - SAN JUAN");
+                Console.WriteLine("19 - LA RIOJA");
+                Console.WriteLine("20 - SAN LUIS");
+                Console.WriteLine("21 - SANTA FE");
+                Console.WriteLine("22 - SANTIAGO DEL ESTERO");
+                Console.WriteLine("23 - TIERRA DEL FUEGO");
+                Console.WriteLine("24 - TUCUMAN");
+               
+
+
+                var opcion2 = Console.ReadLine();
+
+                switch (opcion2)
+                {
+                    case "1":
+                        Console.Clear();
+                        servicio.PaisDestino = "BUENOS AIRES";
+                        salir5 = true;
+                        break;
+
+                    case "2":
+                        Console.Clear();
+                        servicio.PaisDestino = "CABA";
+                        salir5 = true;
+                        break;
+
+                    case "3":
+                        Console.Clear();
+                        servicio.PaisDestino = "CATAMARCA";
+                        salir5 = true;
+                        break;
+
+                    case "4":
+                        Console.Clear();
+                        servicio.PaisDestino = "CHACO";
+                        salir5 = true;
+                        break;
+
+                    case "5":
+                        Console.Clear();
+                        servicio.PaisDestino = "CHUBUT";
+                        salir5 = true;
+                        break;
+
+                    case "6":
+                        Console.Clear();
+                        servicio.PaisDestino = "CORDOBA";
+                        salir5 = true;
+                        break;
+
+                    case "7":
+                        Console.Clear();
+                        servicio.PaisDestino = "CORRIENTES";
+                        salir5 = true;
+                        break;
+
+                    case "8":
+                        Console.Clear();
+                        servicio.PaisDestino = "ENTRE RIOS";
+                        salir5 = true;
+                        break;
+
+                    case "9":
+                        Console.Clear();
+                        servicio.PaisDestino = "FORMOSA";
+                        salir5 = true;
+                        break;
+
+                    case "10":
+                        Console.Clear();
+                        servicio.PaisDestino = "JUJUY";
+                        salir5 = true;
+                        break;
+
+                    case "11":
+                        Console.Clear();
+                        servicio.PaisDestino = "LA PAMPA";
+                        salir5 = true;
+                        break;
+
+                    case "12":
+                        Console.Clear();
+                        servicio.PaisDestino = "LA RIOJA";
+                        salir5 = true;
+                        break;
+
+                    case "13":
+                        Console.Clear();
+                        servicio.PaisDestino = "MENDOZA";
+                        salir5 = true;
+                        break;
+
+                    case "14":
+                        Console.Clear();
+                        servicio.PaisDestino = "MISIONES";
+                        salir5 = true;
+                        break;
+
+                    case "15":
+                        Console.Clear();
+                        servicio.PaisDestino = "NEUQUEN";
+                        salir5 = true;
+                        break;
+
+                    case "16":
+                        Console.Clear();
+                        servicio.PaisDestino = "RIO NEGRO";
+                        salir5 = true;
+                        break;
+
+                    case "17":
+                        Console.Clear();
+                        servicio.PaisDestino = "SALTA";
+                        salir5 = true;
+                        break;
+
+                    case "18":
+                        Console.Clear();
+                        servicio.PaisDestino = "SAN JUAN";
+                        salir5 = true;
+                        break;
+
+                    case "19":
+                        Console.Clear();
+                        servicio.PaisDestino = "LA RIOJA";
+                        salir5 = true;
+                        break;
+
+                    case "20":
+                        Console.Clear();
+                        servicio.PaisDestino = "SAN LUIS";
+                        salir5 = true;
+                        break;
+
+                    case "21":
+                        Console.Clear();
+                        servicio.PaisDestino = "SANTA FE";
+                        salir5 = true;
+                        break;
+
+                    case "22":
+                        Console.Clear();
+                        servicio.PaisDestino = "SANTIAGO DEL ESTERO";
+                        salir5 = true;
+                        break;
+
+                    case "23":
+                        Console.Clear();
+                        servicio.PaisDestino = "TIERRA DEL FUEGO";
+                        salir5 = true;
+                        break;
+
+                    case "24":
+                        Console.Clear();
+                        servicio.PaisDestino = "TUCUMAN";
+                        salir5 = true;
+                        break;
+
+
+
+
+
+                    default:
+                        Console.WriteLine("No ha ingresado una opcion correcta");
+                        break;
+                }
+
+            } while (!salir5);
+
+           
+
+
+
+
+
+
+
+
             //ESTABLECEMOS REGION SEGUN PROVINCIA
-            if(servicio.ProvinciaOrigen == "BUENOS AIRES" || servicio.ProvinciaOrigen == "CABA")
+            if (servicio.ProvinciaOrigen == "BUENOS AIRES" || servicio.ProvinciaOrigen == "CABA")
             {
                 servicio.RegionOrigen = "METROPOLITANA" ;
             }
@@ -232,8 +433,202 @@ namespace AplicacionCorporativos
             if(servicio.PaisDestino == "ARGENTINA")
             { 
             servicio.LocalidadDestino = IngresoTexto("Por favor ingrese Localidad de Destino");
-            servicio.ProvinciaDestino = IngresoTexto("Por favor ingrese Provincia de Destino");
-            if (servicio.ProvinciaDestino == "BUENOS AIRES" || servicio.ProvinciaDestino == "CABA")
+                bool salir6 = false;
+                do
+                {
+
+                    Console.WriteLine("");
+                    Console.WriteLine("Por favor ingrese la provincia de origen");
+                    Console.WriteLine("");
+                    Console.WriteLine("1 - BUENOS AIRES");
+                    Console.WriteLine("2 - CABA");
+                    Console.WriteLine("3 - CATAMARCA");
+                    Console.WriteLine("4 - CHACO");
+                    Console.WriteLine("5 - CHUBUT");
+                    Console.WriteLine("6 - CORDOBA");
+                    Console.WriteLine("7 - CORRIENTES");
+                    Console.WriteLine("8 - ENTRE RIOS");
+                    Console.WriteLine("9 - FORMOSA");
+                    Console.WriteLine("10 - JUJUY");
+                    Console.WriteLine("11 - LA PAMPA");
+                    Console.WriteLine("12 - LA RIOJA");
+                    Console.WriteLine("13 - MENDOZA");
+                    Console.WriteLine("14 - MISIONES");
+                    Console.WriteLine("15 - NEUQUEN");
+                    Console.WriteLine("16 - RIO NEGRO");
+                    Console.WriteLine("17 - SALTA");
+                    Console.WriteLine("18 - SAN JUAN");
+                    Console.WriteLine("19 - LA RIOJA");
+                    Console.WriteLine("20 - SAN LUIS");
+                    Console.WriteLine("21 - SANTA FE");
+                    Console.WriteLine("22 - SANTIAGO DEL ESTERO");
+                    Console.WriteLine("23 - TIERRA DEL FUEGO");
+                    Console.WriteLine("24 - TUCUMAN");
+
+
+
+                    var opcion2 = Console.ReadLine();
+
+                    switch (opcion2)
+                    {
+                        case "1":
+                            Console.Clear();
+                            servicio.PaisDestino = "BUENOS AIRES";
+                            salir6 = true;
+                            break;
+
+                        case "2":
+                            Console.Clear();
+                            servicio.PaisDestino = "CABA";
+                            salir6 = true;
+                            break;
+
+                        case "3":
+                            Console.Clear();
+                            servicio.PaisDestino = "CATAMARCA";
+                            salir6 = true;
+                            break;
+
+                        case "4":
+                            Console.Clear();
+                            servicio.PaisDestino = "CHACO";
+                            salir6 = true;
+                            break;
+
+                        case "5":
+                            Console.Clear();
+                            servicio.PaisDestino = "CHUBUT";
+                            salir6 = true;
+                            break;
+
+                        case "6":
+                            Console.Clear();
+                            servicio.PaisDestino = "CORDOBA";
+                            salir6 = true;
+                            break;
+
+                        case "7":
+                            Console.Clear();
+                            servicio.PaisDestino = "CORRIENTES";
+                            salir6 = true;
+                            break;
+
+                        case "8":
+                            Console.Clear();
+                            servicio.PaisDestino = "ENTRE RIOS";
+                            salir6 = true;
+                            break;
+
+                        case "9":
+                            Console.Clear();
+                            servicio.PaisDestino = "FORMOSA";
+                            salir6 = true;
+                            break;
+
+                        case "10":
+                            Console.Clear();
+                            servicio.PaisDestino = "JUJUY";
+                            salir6 = true;
+                            break;
+
+                        case "11":
+                            Console.Clear();
+                            servicio.PaisDestino = "LA PAMPA";
+                            salir6 = true;
+                            break;
+
+                        case "12":
+                            Console.Clear();
+                            servicio.PaisDestino = "LA RIOJA";
+                            salir6 = true;
+                            break;
+
+                        case "13":
+                            Console.Clear();
+                            servicio.PaisDestino = "MENDOZA";
+                            salir6 = true;
+                            break;
+
+                        case "14":
+                            Console.Clear();
+                            servicio.PaisDestino = "MISIONES";
+                            salir6 = true;
+                            break;
+
+                        case "15":
+                            Console.Clear();
+                            servicio.PaisDestino = "NEUQUEN";
+                            salir6 = true;
+                            break;
+
+                        case "16":
+                            Console.Clear();
+                            servicio.PaisDestino = "RIO NEGRO";
+                            salir6 = true;
+                            break;
+
+                        case "17":
+                            Console.Clear();
+                            servicio.PaisDestino = "SALTA";
+                            salir6 = true;
+                            break;
+
+                        case "18":
+                            Console.Clear();
+                            servicio.PaisDestino = "SAN JUAN";
+                            salir6 = true;
+                            break;
+
+                        case "19":
+                            Console.Clear();
+                            servicio.PaisDestino = "LA RIOJA";
+                            salir6 = true;
+                            break;
+
+                        case "20":
+                            Console.Clear();
+                            servicio.PaisDestino = "SAN LUIS";
+                            salir6 = true;
+                            break;
+
+                        case "21":
+                            Console.Clear();
+                            servicio.PaisDestino = "SANTA FE";
+                            salir6 = true;
+                            break;
+
+                        case "22":
+                            Console.Clear();
+                            servicio.PaisDestino = "SANTIAGO DEL ESTERO";
+                            salir6 = true;
+                            break;
+
+                        case "23":
+                            Console.Clear();
+                            servicio.PaisDestino = "TIERRA DEL FUEGO";
+                            salir6 = true;
+                            break;
+
+                        case "24":
+                            Console.Clear();
+                            servicio.PaisDestino = "TUCUMAN";
+                            salir6 = true;
+                            break;
+
+
+
+
+
+                        default:
+                            Console.WriteLine("No ha ingresado una opcion correcta");
+                            break;
+                    }
+
+                } while (!salir6);
+
+
+
+                if (servicio.ProvinciaDestino == "BUENOS AIRES" || servicio.ProvinciaDestino == "CABA")
             {
                 servicio.RegionDestino = "METROPOLITANA";
             }
