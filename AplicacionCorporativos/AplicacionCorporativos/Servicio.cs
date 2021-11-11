@@ -806,11 +806,57 @@ namespace AplicacionCorporativos
                     {
                         decimal precio = ConsultaTarifaLimitrofe(servicio.Peso);
                         servicio.Costo = servicio.Costo + precio;
+
+                        if ("METROPOLTANA" == servicio.RegionOrigen)
+                        {
+                            if ("CABA" == servicio.ProvinciaOrigen)
+                            {
+                                if ("CABA" == servicio.LocalidadOrigen)
+                                {
+                                    precio = ConsultaTarifaLocal(servicio.Peso);
+
+                                    servicio.Costo = servicio.Costo + precio;
+                                }
+                                else
+                                {
+                                    precio = ConsultaTarifaProvincial(servicio.Peso);
+                                    servicio.Costo = servicio.Costo + precio;
+                                }
+                            }
+                            else
+                            {
+                                precio = ConsultaTarifaRegional(servicio.Peso);
+                                servicio.Costo = servicio.Costo + precio;
+                            }
+                        }
                     }
                     else
                     {
                         decimal precio = ConsultaTarifaSudamerica(servicio.Peso);
                         servicio.Costo = servicio.Costo + precio;
+
+                        if ("METROPOLTANA" == servicio.RegionOrigen)
+                        {
+                            if ("CABA" == servicio.ProvinciaOrigen)
+                            {
+                                if ("CABA" == servicio.LocalidadOrigen)
+                                {
+                                    precio = ConsultaTarifaLocal(servicio.Peso);
+
+                                    servicio.Costo = servicio.Costo + precio;
+                                }
+                                else
+                                {
+                                    precio = ConsultaTarifaProvincial(servicio.Peso);
+                                    servicio.Costo = servicio.Costo + precio;
+                                }
+                            }
+                            else
+                            {
+                                precio = ConsultaTarifaRegional(servicio.Peso);
+                                servicio.Costo = servicio.Costo + precio;
+                            }
+                        }
                     }
                 }
 
@@ -958,11 +1004,57 @@ namespace AplicacionCorporativos
                     {
                         decimal precio = ConsultaTarifaLimitrofe(servicio.Peso);
                         servicio.Costo = servicio.Costo + precio;
+
+                        if ("METROPOLTANA" == servicio.RegionOrigen)
+                        {
+                            if ("CABA" == servicio.ProvinciaOrigen)
+                            {
+                                if ("CABA" == servicio.LocalidadOrigen)
+                                {
+                                    precio = ConsultaTarifaLocal(servicio.Peso);
+
+                                    servicio.Costo = servicio.Costo + precio;
+                                }
+                                else
+                                {
+                                    precio = ConsultaTarifaProvincial(servicio.Peso);
+                                    servicio.Costo = servicio.Costo + precio;
+                                }
+                            }
+                            else
+                            {
+                                precio = ConsultaTarifaRegional(servicio.Peso);
+                                servicio.Costo = servicio.Costo + precio;
+                            }
+                        }
                     }
                     else
                     {
                         decimal precio = ConsultaTarifaSudamerica(servicio.Peso);
                         servicio.Costo = servicio.Costo + precio;
+
+                        if ("METROPOLTANA" == servicio.RegionOrigen)
+                        {
+                            if ("CABA" == servicio.ProvinciaOrigen)
+                            {
+                                if ("CABA" == servicio.LocalidadOrigen)
+                                {
+                                    precio = ConsultaTarifaLocal(servicio.Peso);
+
+                                    servicio.Costo = servicio.Costo + precio;
+                                }
+                                else
+                                {
+                                    precio = ConsultaTarifaProvincial(servicio.Peso);
+                                    servicio.Costo = servicio.Costo + precio;
+                                }
+                            }
+                            else
+                            {
+                                precio = ConsultaTarifaRegional(servicio.Peso);
+                                servicio.Costo = servicio.Costo + precio;
+                            }
+                        }
                     }
                 }
 
@@ -1008,11 +1100,58 @@ namespace AplicacionCorporativos
                     {
                         decimal precio = ConsultaTarifaLimitrofe(servicio.Peso);
                         servicio.Costo = servicio.Costo + precio;
+
+                        if ("METROPOLTANA" == servicio.RegionOrigen)
+                        {
+                            if ("CABA" == servicio.ProvinciaOrigen)
+                            {
+                                if ("CABA" == servicio.LocalidadOrigen)
+                                {
+                                    precio = ConsultaTarifaLocal(servicio.Peso);
+
+                                    servicio.Costo = servicio.Costo + precio;
+                                }
+                                else
+                                {
+                                    precio = ConsultaTarifaProvincial(servicio.Peso);
+                                    servicio.Costo = servicio.Costo + precio;
+                                }
+                            }
+                            else
+                            {
+                                precio = ConsultaTarifaRegional(servicio.Peso);
+                                servicio.Costo = servicio.Costo + precio;
+                            }
+                        }
                     }
                     else
                     {
                         decimal precio = ConsultaTarifaSudamerica(servicio.Peso);
                         servicio.Costo = servicio.Costo + precio;
+
+                        if ("METROPOLTANA" == servicio.RegionOrigen)
+                        {
+                            if ("CABA" == servicio.ProvinciaOrigen)
+                            {
+                                if ("CABA" == servicio.LocalidadOrigen)
+                                {
+                                    precio = ConsultaTarifaLocal(servicio.Peso);
+
+                                    servicio.Costo = servicio.Costo + precio;
+                                }
+                                else
+                                {
+                                    precio = ConsultaTarifaProvincial(servicio.Peso);
+                                    servicio.Costo = servicio.Costo + precio;
+                                }
+                            }
+                            else
+                            {
+                                precio = ConsultaTarifaRegional(servicio.Peso);
+                                servicio.Costo = servicio.Costo + precio;
+                            }
+                        }
+
                     }
                 }
 
