@@ -125,7 +125,112 @@ namespace AplicacionCorporativos
                 servicio.RegionOrigen = "NORTE";
             }
             servicio.PaisOrigen = "ARGENTINA"; //SOLO SALEN SERVICIOS DESDE ARGENTINA PUEDE VARIAR SOLO EL DESTINO
+
+
+            bool salir4 = false;
+            do
+            {
+
+                Console.WriteLine("");
+                Console.WriteLine("Por favor ingrese Pais de Destino");
+                Console.WriteLine("");
+                Console.WriteLine("1 - ARGENTINA");
+                Console.WriteLine("2 - BRASIL");
+                Console.WriteLine("3 - URUGUAY");
+                Console.WriteLine("4 - BOLIVIA");
+                Console.WriteLine("5 - CHILE");
+                Console.WriteLine("6 - PARAGUAY");
+                Console.WriteLine("7 - COLOMBIA");
+                Console.WriteLine("8 - PERU");
+                Console.WriteLine("9 - ECUADOR");
+                Console.WriteLine("10 - VENEZUELA");
+                Console.WriteLine("11 - GUYANA");
+
+
+                var opcion2 = Console.ReadLine();
+
+                switch (opcion2)
+                {
+                    case "1":
+                        Console.Clear();
+                        servicio.PaisDestino = "ARGENTINA";
+                        salir4 = true;
+                        break;
+
+                    case "2":
+                        Console.Clear();
+                        servicio.PaisDestino = "BRASIL";
+                        salir4 = true;
+                        break;
+
+                    case "3":
+                        Console.Clear();
+                        servicio.PaisDestino = "URUGUAY";
+                        salir4 = true;
+                        break;
+
+                    case "4":
+                        Console.Clear();
+                        servicio.PaisDestino = "BOLIVIA";
+                        salir4 = true;
+                        break;
+
+                    case "5":
+                        Console.Clear();
+                        servicio.PaisDestino = "CHILE";
+                        salir4 = true;
+                        break;
+
+                    case "6":
+                        Console.Clear();
+                        servicio.PaisDestino = "PARAGUAY";
+                        salir4 = true;
+                        break;
+
+                    case "7":
+                        Console.Clear();
+                        servicio.PaisDestino = "COLOMBIA";
+                        salir4 = true;
+                        break;
+
+                    case "8":
+                        Console.Clear();
+                        servicio.PaisDestino = "PERU";
+                        salir4 = true;
+                        break;
+
+                    case "9":
+                        Console.Clear();
+                        servicio.PaisDestino = "ECUADOR";
+                        salir4 = true;
+                        break;
+
+                    case "10":
+                        Console.Clear();
+                        servicio.PaisDestino = "VENEZUELA";
+                        salir4 = true;
+                        break;
+
+                    case "11":
+                        Console.Clear();
+                        servicio.PaisDestino = "GUYANA";
+                        salir4 = true;
+                        break;
+
+
+
+
+                    default:
+                        Console.WriteLine("No ha ingresado una opcion correcta");
+                        break;
+                }
+
+            } while (!salir4);
+
             servicio.DomicilioDestino = IngresoTexto("Por favor ingrese Domicilio y altura de Destino");
+
+            if(servicio.PaisDestino == "ARGENTINA")
+            { 
             servicio.LocalidadDestino = IngresoTexto("Por favor ingrese Localidad de Destino");
             servicio.ProvinciaDestino = IngresoTexto("Por favor ingrese Provincia de Destino");
             if (servicio.ProvinciaDestino == "BUENOS AIRES" || servicio.ProvinciaDestino == "CABA")
@@ -144,8 +249,10 @@ namespace AplicacionCorporativos
             {
                 servicio.RegionDestino = "NORTE";
             }
-            servicio.PaisDestino = IngresoTexto("Por favor ingrese Pais de Destino");
-            //TODO : ver tambien de establecer la region del pais fuera de argentina ya que afecta al costo: puede ser limitorfe, america latina, america del norte, europa, asia
+
+            }
+
+            
             servicio.Peso = IngresarPeso("Ingrese el peso expresado en gramos hasta 30000");
 
 
