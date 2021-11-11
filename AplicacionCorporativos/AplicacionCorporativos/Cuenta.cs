@@ -38,6 +38,18 @@ namespace AplicacionCorporativos
             return modelo;
         }
 
+        public static Cuenta CrearModeloBusqueda2(int nroCliente, string estado)
+        {
+            var modelo = new Cuenta();
+
+
+            modelo.NroCliente = nroCliente;
+            modelo.Estado = estado;
+
+
+            return modelo;
+        }
+
         public bool CoincideCon(Cuenta modelo)
         {
             if (modelo.NroCliente != 0 && NroCliente != modelo.NroCliente)
@@ -48,6 +60,17 @@ namespace AplicacionCorporativos
             return true;
         }
 
+
+        public bool CoincideCon2(Cuenta modelo2)
+        {
+            //modelo.NroCliente != 0 && NroCliente != modelo.NroCliente && 
+            if (Estado != modelo2.Estado || NroCliente != modelo2.NroCliente)
+            {
+                return false;
+            }
+
+            return true;
+        }
 
 
 

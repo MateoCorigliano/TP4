@@ -21,6 +21,7 @@ namespace AplicacionCorporativos
             int dni;
             string nombre = "";
             int nroCliente = 0;
+            string estado = "IMPAGA";
 
             //VALIDACION USAURIOS REGISTRADOS
             do
@@ -72,7 +73,7 @@ namespace AplicacionCorporativos
                         
                         case "3":
                         Console.Clear();
-                        ConsultaCuenta(nroCliente);
+                        ConsultaCuenta(nroCliente, estado);
                             break;
                         
 
@@ -145,7 +146,7 @@ namespace AplicacionCorporativos
         }
 
 
-        private static void ConsultaCuenta(int nroCliente)
+        private static void ConsultaCuenta(int nroCliente, string estado)
         {
             Console.WriteLine("##########################");
             Console.WriteLine("#                        #");
@@ -171,7 +172,7 @@ namespace AplicacionCorporativos
             Console.WriteLine("#                        #");
             Console.WriteLine("##########################");
             Console.WriteLine("");
-            AgendaCuentas.CalculaSaldo(nroCliente);
+            AgendaCuentas.CalculaSaldo(nroCliente, estado);
             Console.WriteLine("");
             Console.WriteLine("Pulse una tecla para continuar");
             Console.ReadKey();

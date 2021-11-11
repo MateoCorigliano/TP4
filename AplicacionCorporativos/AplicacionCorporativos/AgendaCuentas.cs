@@ -62,16 +62,16 @@ namespace AplicacionCorporativos
             }
         }
 
-        public static void CalculaSaldo(int nroCliente)
+        public static void CalculaSaldo(int nroCliente, string estado)
         {
-            var modelo = Cuenta.CrearModeloBusqueda(nroCliente);
+            var modelo = Cuenta.CrearModeloBusqueda2(nroCliente, estado);
             decimal total = 0;
             bool encontre = false;
 
             
             foreach (var cuentas in entradas)
             {
-                if (cuentas.CoincideCon(modelo))
+                if (cuentas.CoincideCon2(modelo))
                 {
                     var saldo = cuentas.Saldo;
 
