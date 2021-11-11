@@ -770,7 +770,7 @@ namespace AplicacionCorporativos
 
             //peso hasta 500gr:
 
-            if (servicio.Peso < 500) //TODO: utilizo entero, ver por que no deja utilizar el operador '<' cuando es decimal, sino vamos a tener que utilizar INT y que ingresen gramos
+            if (servicio.Peso < 500)
             {
                 if(servicio.PaisDestino == servicio.PaisOrigen)
                 { 
