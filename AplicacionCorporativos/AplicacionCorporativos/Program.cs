@@ -147,10 +147,32 @@ namespace AplicacionCorporativos
 
         private static void ConsultaCuenta(int nroCliente)
         {
-            Console.WriteLine("ESTADO DE FACTURACION:");
+            Console.WriteLine("##########################");
+            Console.WriteLine("#                        #");
+            Console.WriteLine("# ESTADO DE FACTURACION  #");
+            Console.WriteLine("#                        #");
+            Console.WriteLine("##########################");
+            Console.WriteLine("");
             AgendaCuentas.Seleccionar(nroCliente);
-            Console.WriteLine("SERVICIOS PENDIENTES:");
+            Console.WriteLine("");
+            Console.WriteLine("");
+            Console.WriteLine("##########################");
+            Console.WriteLine("#                        #");
+            Console.WriteLine("#  SERVICIOS PENDIENTES  #");
+            Console.WriteLine("#                        #");
+            Console.WriteLine("##########################");
+            Console.WriteLine("");
             AgendaServicios.Seleccionar2(nroCliente);
+            Console.WriteLine("");
+            Console.WriteLine("");
+            Console.WriteLine("##########################");
+            Console.WriteLine("#                        #");
+            Console.WriteLine("#      SALDO TOTAL       #");
+            Console.WriteLine("#                        #");
+            Console.WriteLine("##########################");
+            Console.WriteLine("");
+            AgendaCuentas.CalculaSaldo(nroCliente);
+            Console.WriteLine("");
             Console.WriteLine("Pulse una tecla para continuar");
             Console.ReadKey();
             Console.Clear();

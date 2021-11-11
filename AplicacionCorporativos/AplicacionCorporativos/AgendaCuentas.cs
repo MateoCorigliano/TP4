@@ -62,6 +62,24 @@ namespace AplicacionCorporativos
             }
         }
 
+        public static void CalculaSaldo(int nroCliente)
+        {
+            var modelo = Cuenta.CrearModeloBusqueda(nroCliente);
+            decimal total = 0;
+
+            foreach (var cuentas in entradas)
+            {
+                var saldo = cuentas.Saldo;
+                
+                total = total + saldo;
+                
+
+
+            }
+
+            Console.WriteLine($"Saldo: ${total}");
+        }
+
     }
 }
 
