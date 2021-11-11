@@ -102,7 +102,7 @@ namespace AplicacionCorporativos
 
             
             servicio.Trackeo = new Random().Next(50000000, 99999999); 
-            servicio.Estado = "RECIBIDO"; //EL ESTADO SERA ACTUALIZADO POR UNA APLICACION LOGISTICA EXTERNA A ESTA APLICACION
+            servicio.Estado = "INICIADA"; //EL ESTADO SERA ACTUALIZADO POR UNA APLICACION LOGISTICA EXTERNA A ESTA APLICACION
 
             servicio.DomicilioOrigen = IngresoTexto("Por favor ingrese Domicilio y altura de Origen");
             servicio.LocalidadOrigen = IngresoTexto("Por favor ingrese Localidad de Origen");
