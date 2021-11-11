@@ -128,11 +128,7 @@ namespace AplicacionCorporativos
 
         private static void ConsultaCuenta(int nroCliente)
         {
-            var cuenta = AgendaCuentas.Seleccionar(nroCliente);
-            if (cuenta != null)
-            {
-                cuenta.Mostrar();
-            }
+            AgendaCuentas.Seleccionar(nroCliente);
             
         }
         

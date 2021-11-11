@@ -39,20 +39,27 @@ namespace AplicacionCorporativos
 
         }
 
-        public static Cuenta Seleccionar(int nroCliente)
+        public static void Seleccionar(int nroCliente)
         {
             var modelo = Cuenta.CrearModeloBusqueda(nroCliente);
+
+            bool encontre = false;
 
             foreach (var cuentas in entradas)
             {
                 if (cuentas.CoincideCon(modelo))
                 {
                     Console.WriteLine($"Nro Factura:{cuentas.NroFactura}\n" +
-                        $"Saldo: ${cuentas.Saldo}\n");
+                        $"Saldo: ${cuentas.Saldo}\n" +
+                        $"Estado: {cuentas.Estado}\n");
+                    encontre = true;
                 }
             }
-            Console.WriteLine("No se ha encontrado el usuario ingresado");
-            return null;
+
+            if (encontre == false)
+            {
+                Console.WriteLine("No se ha encontrado el usuario ingresado");
+            }
         }
 
     }

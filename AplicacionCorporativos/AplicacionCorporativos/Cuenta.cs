@@ -11,11 +11,7 @@ namespace AplicacionCorporativos
         public int NroCliente { get; set; }
         public int NroFactura { get; set; }
         public decimal Saldo { get; set; }
-
-        /*public Cuenta(int nroCliente)
-        {
-            NroCliente = nroCliente;
-        }*/
+        public string Estado { get; set; }
 
         public Cuenta()
         {
@@ -28,6 +24,7 @@ namespace AplicacionCorporativos
             NroCliente = int.Parse(datos[0]);
             NroFactura = int.Parse(datos[1]);
             Saldo = decimal.Parse(datos[2]);
+            Estado = datos[3];
         }
 
         public static Cuenta CrearModeloBusqueda(int nroCliente)
@@ -49,13 +46,6 @@ namespace AplicacionCorporativos
             }
 
             return true;
-        }
-
-        public void Mostrar()
-        {
-            Console.WriteLine($"Nro Factura: {NroFactura}");
-            Console.WriteLine($"Saldo: {Saldo}");
-
         }
 
 
