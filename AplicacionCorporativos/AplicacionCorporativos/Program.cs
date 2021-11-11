@@ -21,6 +21,8 @@ namespace AplicacionCorporativos
             //FACTURAS Y SUS SALDOS (CUENTA CORRIENTE)
             //USUARIOS HABILITADOS - OK
 
+            Console.Clear();
+
             bool seguir = true;
             int dni;
             string nombre = "";
@@ -122,6 +124,8 @@ namespace AplicacionCorporativos
                     
                 }
             } while (true);
+            Console.WriteLine("Pulse una tecla para continuar");
+            Console.ReadKey();
         }
 
 
@@ -133,14 +137,16 @@ namespace AplicacionCorporativos
             {
                 servicio.Mostrar();
             }
-
+            Console.WriteLine("Pulse una tecla para continuar");
+            Console.ReadKey();
         }
 
 
         private static void ConsultaCuenta(int nroCliente)
         {
             AgendaCuentas.Seleccionar(nroCliente);
-            
+            Console.WriteLine("Pulse una tecla para continuar");
+            Console.ReadKey();
         }
         
 
