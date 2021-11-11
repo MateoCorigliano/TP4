@@ -59,6 +59,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AgendaTarifasAdicionales.cs" />
+    <Compile Include="AgendaTarifasInternacionales.cs" />
     <Compile Include="AgendaTarifasNacionales.cs" />
     <Compile Include="AgendaUsuarios.cs" />
     <Compile Include="AgendaServicios.cs" />
@@ -68,6 +69,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Servicio.cs" />
     <Compile Include="TarifasAdicionales.cs" />
+    <Compile Include="TarifasInternacionales.cs" />
     <Compile Include="TarifasNacionales.cs" />
     <Compile Include="Usuarios.cs" />
   </ItemGroup>

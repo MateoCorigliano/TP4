@@ -11,14 +11,8 @@ namespace AplicacionCorporativos
     {
         static void Main(string[] args)
         {
-            //TODO: DATOS QUE DEBEN VENIR DE FUENTES/TXT EXTERNOS, recordar agregar los txt de prueba al proyecto de GitHub en la carpeta bin/debug:
-            //ver si es necesario crear una clase para las propiedades y otra para el archivo en lugar de hacer todo en una sola clase
-            //PAISES
-            //PROVINCIAS
-            //LOCALIDADES
-            //REGIONES (SUR, CENTRO, NORTE, METROPOLITANA (BS Y CABA))
-            //CUADRO TARIFARIO
-
+            
+            
             Console.WriteLine("");
             Console.WriteLine("APLICACION CLIENTES CORPORATIVOS");
             Console.WriteLine("");

@@ -100,24 +100,56 @@ namespace AplicacionCorporativos
             var servicio = new Servicio();
 
             
-            servicio.Trackeo = new Random().Next(50000000, 99999999); //TODO buscar un metodo mas prolijo de trackeo
+            servicio.Trackeo = new Random().Next(50000000, 99999999); 
             servicio.Estado = "RECIBIDO"; //EL ESTADO SERA ACTUALIZADO POR UNA APLICACION LOGISTICA EXTERNA A ESTA APLICACION
 
             servicio.DomicilioOrigen = IngresoTexto("Por favor ingrese Domicilio y altura de Origen");
             servicio.LocalidadOrigen = IngresoTexto("Por favor ingrese Localidad de Origen");
             servicio.ProvinciaOrigen = IngresoTexto("Por favor ingrese Provincia de Origen");//TODO ver de establecer una base con provincias disponibles y validar
-            servicio.RegionOrigen = IngresoTexto("Por favor ingrese Region de Origen");//TODO ver si hay logica para autodeterminar la region segun provincia
-            servicio.PaisOrigen = "ARGENTINA";
+            
+            //ESTABLECEMOS REGION SEGUN PROVINCIA
+            if(servicio.ProvinciaOrigen == "BUENOS AIRES" || servicio.ProvinciaOrigen == "CABA")
+            {
+                servicio.RegionOrigen = "METROPOLITANA" ;
+            }
+            if (servicio.ProvinciaOrigen == "TIERRA DEL FUEGO" || servicio.ProvinciaOrigen == "SANTA CRUZ" || servicio.ProvinciaOrigen == "CHUBUT" || servicio.ProvinciaOrigen == "RIO NEGRO" || servicio.ProvinciaOrigen == "NEUQUEN")
+            {
+                servicio.RegionOrigen = "SUR";
+            }
+            if (servicio.ProvinciaOrigen == "LA PAMPA" || servicio.ProvinciaOrigen == "SAN LUIS" || servicio.ProvinciaOrigen == "MENDOZA" || servicio.ProvinciaOrigen == "CORDOBA" || servicio.ProvinciaOrigen == "SANTA FE" )
+            {
+                servicio.RegionOrigen = "CENTRO";
+            }
+            if (servicio.ProvinciaOrigen == "ENTRE RIOS" || servicio.ProvinciaOrigen == "CORRIENTES" || servicio.ProvinciaOrigen == "MISIONES" || servicio.ProvinciaOrigen == "CHACO" || servicio.ProvinciaOrigen == "FORMOSA" || servicio.ProvinciaOrigen == "SANTIAGO DEL ESTERO" || servicio.ProvinciaOrigen == "TUCUMAN" || servicio.ProvinciaOrigen == "SALTA" || servicio.ProvinciaOrigen == "JUJUY" || servicio.ProvinciaOrigen == "CATAMARCA" || servicio.ProvinciaOrigen == "LA RIOJA" || servicio.ProvinciaOrigen == "SAN JUAN")
+            {
+                servicio.RegionOrigen = "NORTE";
+            }
+            servicio.PaisOrigen = "ARGENTINA"; //SOLO SALEN SERVICIOS DESDE ARGENTINA PUEDE VARIAR SOLO EL DESTINO
             servicio.DomicilioDestino = IngresoTexto("Por favor ingrese Domicilio y altura de Destino");
             servicio.LocalidadDestino = IngresoTexto("Por favor ingrese Localidad de Destino");
             servicio.ProvinciaDestino = IngresoTexto("Por favor ingrese Provincia de Destino");
-            servicio.RegionDestino = IngresoTexto("Por favor ingrese Region de Destino");
+            if (servicio.ProvinciaDestino == "BUENOS AIRES" || servicio.ProvinciaDestino == "CABA")
+            {
+                servicio.RegionDestino = "METROPOLITANA";
+            }
+            if (servicio.ProvinciaDestino == "TIERRA DEL FUEGO" || servicio.ProvinciaDestino == "SANTA CRUZ" || servicio.ProvinciaDestino == "CHUBUT" || servicio.ProvinciaDestino == "RIO NEGRO" || servicio.ProvinciaDestino == "NEUQUEN")
+            {
+                servicio.RegionDestino = "SUR";
+            }
+            if (servicio.ProvinciaDestino == "LA PAMPA" || servicio.ProvinciaDestino == "SAN LUIS" || servicio.ProvinciaDestino == "MENDOZA" || servicio.ProvinciaDestino == "CORDOBA" || servicio.ProvinciaDestino == "SANTA FE")
+            {
+                servicio.RegionDestino = "CENTRO";
+            }
+            if (servicio.ProvinciaDestino == "ENTRE RIOS" || servicio.ProvinciaDestino == "CORRIENTES" || servicio.ProvinciaDestino == "MISIONES" || servicio.ProvinciaDestino == "CHACO" || servicio.ProvinciaDestino == "FORMOSA" || servicio.ProvinciaDestino == "SANTIAGO DEL ESTERO" || servicio.ProvinciaDestino == "TUCUMAN" || servicio.ProvinciaDestino == "SALTA" || servicio.ProvinciaDestino == "JUJUY" || servicio.ProvinciaDestino == "CATAMARCA" || servicio.ProvinciaDestino == "LA RIOJA" || servicio.ProvinciaDestino == "SAN JUAN")
+            {
+                servicio.RegionDestino = "NORTE";
+            }
             servicio.PaisDestino = IngresoTexto("Por favor ingrese Pais de Destino");
             //TODO : ver tambien de establecer la region del pais fuera de argentina ya que afecta al costo: puede ser limitorfe, america latina, america del norte, europa, asia
             servicio.Peso = IngresarPeso("Ingrese el peso expresado en gramos hasta 30000");
 
 
-            //TODO servicio.Urgente = IngresarBool(""); ver de establecer un metodo o dejar la validacion individual de abajo
+           
 
             bool salir = false;
             do
@@ -152,7 +184,7 @@ namespace AplicacionCorporativos
                 }
 
             } while (!salir);
-            //TODO servicio.EntregaSucursal = IngresarBool(""); ver de establecer un metodo o dejar la validacion individual de abajo
+            
 
             bool salir2 = false;
             do
@@ -189,7 +221,7 @@ namespace AplicacionCorporativos
 
             } while (!salir2);
 
-            //TODO servicio.RetiroSucursal = IngresarBool(""); ver de establecer un metodo o dejar la validacion individual de abajo
+            
 
             bool salir3 = false;
             do
@@ -270,7 +302,17 @@ namespace AplicacionCorporativos
                 }
                 else
                 {
-                    //TODO: aqui se deberia contemplar el calculo para servicios internacionales
+                    //servicios internacionales
+                    if(servicio.PaisDestino == "BRASIL" || servicio.PaisDestino == "URUGUAY" || servicio.PaisDestino == "BOLIVIA" || servicio.PaisDestino == "CHILE" || servicio.PaisDestino == "PARAGUAY" )
+                    {
+                        decimal precio = ConsultaTarifaLimitrofe(servicio.Peso);
+                        servicio.Costo = servicio.Costo + precio;
+                    }
+                    else
+                    {
+                        decimal precio = ConsultaTarifaSudamerica(servicio.Peso);
+                        servicio.Costo = servicio.Costo + precio;
+                    }
                 }
 
             }
@@ -310,7 +352,17 @@ namespace AplicacionCorporativos
                 }
                 else
                 {
-                    //TODO: aqui se deberia contemplar el calculo para servicios internacionales
+                    //servicios internacionales
+                    if (servicio.PaisDestino == "BRASIL" || servicio.PaisDestino == "URUGUAY" || servicio.PaisDestino == "BOLIVIA" || servicio.PaisDestino == "CHILE" || servicio.PaisDestino == "PARAGUAY")
+                    {
+                        decimal precio = ConsultaTarifaLimitrofe(servicio.Peso);
+                        servicio.Costo = servicio.Costo + precio;
+                    }
+                    else
+                    {
+                        decimal precio = ConsultaTarifaSudamerica(servicio.Peso);
+                        servicio.Costo = servicio.Costo + precio;
+                    }
                 }
 
             }
@@ -350,7 +402,17 @@ namespace AplicacionCorporativos
                 }
                 else
                 {
-                    //TODO: aqui se deberia contemplar el calculo para servicios internacionales
+                    //servicios internacionales
+                    if (servicio.PaisDestino == "BRASIL" || servicio.PaisDestino == "URUGUAY" || servicio.PaisDestino == "BOLIVIA" || servicio.PaisDestino == "CHILE" || servicio.PaisDestino == "PARAGUAY")
+                    {
+                        decimal precio = ConsultaTarifaLimitrofe(servicio.Peso);
+                        servicio.Costo = servicio.Costo + precio;
+                    }
+                    else
+                    {
+                        decimal precio = ConsultaTarifaSudamerica(servicio.Peso);
+                        servicio.Costo = servicio.Costo + precio;
+                    }
                 }
 
             }
@@ -390,7 +452,17 @@ namespace AplicacionCorporativos
                 }
                 else
                 {
-                    //TODO: aqui se deberia contemplar el calculo para servicios internacionales
+                    //servicios internacionales
+                    if (servicio.PaisDestino == "BRASIL" || servicio.PaisDestino == "URUGUAY" || servicio.PaisDestino == "BOLIVIA" || servicio.PaisDestino == "CHILE" || servicio.PaisDestino == "PARAGUAY")
+                    {
+                        decimal precio = ConsultaTarifaLimitrofe(servicio.Peso);
+                        servicio.Costo = servicio.Costo + precio;
+                    }
+                    else
+                    {
+                        decimal precio = ConsultaTarifaSudamerica(servicio.Peso);
+                        servicio.Costo = servicio.Costo + precio;
+                    }
                 }
 
             }
@@ -439,6 +511,18 @@ namespace AplicacionCorporativos
         private static decimal ConsultaTarifaNacional(decimal pesoLimite)
         {
             decimal precio = AgendaTarifasNacionales.SeleccionarPrecioNacional(pesoLimite);
+            return precio;
+        }
+
+        private static decimal ConsultaTarifaLimitrofe(decimal pesoLimite)
+        {
+            decimal precio = AgendaTarifasInternacionales.SeleccionarPrecioLimitrofe(pesoLimite);
+            return precio;
+        }
+
+        private static decimal ConsultaTarifaSudamerica(decimal pesoLimite)
+        {
+            decimal precio = AgendaTarifasInternacionales.SeleccionarPrecioSudamerica(pesoLimite);
             return precio;
         }
 

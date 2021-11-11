@@ -45,16 +45,5 @@ namespace AplicacionCorporativos
 
 
 
-        /*
-    public bool CoincideCon(TarifasNacionales modelo)
-    {
-        if (modelo.NroCliente != 0 && NroCliente != modelo.NroCliente)
-        {
-            return false;
-        }
-
-        return true;
-    }
-    */
     }
 }
