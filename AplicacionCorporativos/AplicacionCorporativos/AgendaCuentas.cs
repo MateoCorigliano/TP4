@@ -10,16 +10,14 @@ namespace AplicacionCorporativos
 {
     class AgendaCuentas
     {
-        private static readonly Dictionary<int, Cuenta> entradas;
+        private static readonly List<Cuenta> entradas;
 
         const string nombreArchivo = "estado de cuenta.txt";
-
-        //constructor:
 
         static AgendaCuentas()
         {
 
-            entradas = new Dictionary<int, Cuenta>();
+            entradas = new List<Cuenta>();
 
             if (File.Exists(nombreArchivo))
 
@@ -32,7 +30,7 @@ namespace AplicacionCorporativos
                     {
                         var linea = reader.ReadLine();
                         var cuenta = new Cuenta(linea);
-                        entradas.Add(cuenta.NroCliente, cuenta);
+                        entradas.Add(cuenta);
                     }
 
                 }
@@ -45,17 +43,17 @@ namespace AplicacionCorporativos
         {
             var modelo = Cuenta.CrearModeloBusqueda(nroCliente);
 
-            foreach (var cuentas in entradas.Values)
+            foreach (var cuentas in entradas)
             {
                 if (cuentas.CoincideCon(modelo))
                 {
-                    return cuentas;
+                    Console.WriteLine($"Nro Factura:{cuentas.NroFactura}\n" +
+                        $"Saldo: ${cuentas.Saldo}\n");
                 }
             }
             Console.WriteLine("No se ha encontrado el usuario ingresado");
             return null;
         }
-
 
     }
 }
