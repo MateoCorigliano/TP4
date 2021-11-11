@@ -21,15 +21,26 @@ namespace AplicacionCorporativos
             //FACTURAS Y SUS SALDOS (CUENTA CORRIENTE)
             //USUARIOS HABILITADOS - OK
 
-            var usuario = AgendaUsuarios.Seleccionar();
+            bool seguir = true;
+            int dni;
+            string nombre = "";
+            int nroCliente = 0;
 
             do
             {
-                usuario = AgendaUsuarios.Seleccionar();
+                var usuario = AgendaUsuarios.Seleccionar();
 
-            } while (usuario == null);
+                if(usuario != null)
+                {
+                    dni = usuario.Dni;
+                    nombre = usuario.Nombre;
+                    nroCliente = usuario.ClienteAsociado;
+                    seguir = false;
+                }
 
-            Console.WriteLine($"Bienvenido {usuario.Nombre}, su numero de cliente asociado es {usuario.ClienteAsociado}");
+            } while (seguir);
+
+            Console.WriteLine($"Bienvenido {nombre}, su numero de cliente asociado es {nroCliente}");
 
 
 
@@ -59,7 +70,7 @@ namespace AplicacionCorporativos
                             break;
                         
                         case "3":
-                            ConsultaCuenta(usuario.ClienteAsociado);
+                            ConsultaCuenta(nroCliente);
                             break;
                         
 
