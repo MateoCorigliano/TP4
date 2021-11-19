@@ -27,7 +27,6 @@ namespace AplicacionCorporativos
             TopeUrgente = decimal.Parse(datos[1]);
             CargoRetiro = decimal.Parse(datos[2]);
             CargoEntrega = decimal.Parse(datos[3]);
-
         }
 
 

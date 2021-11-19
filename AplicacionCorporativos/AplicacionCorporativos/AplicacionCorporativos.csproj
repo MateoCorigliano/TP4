@@ -58,12 +58,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AgendaContinentes.cs" />
+    <Compile Include="AgendaPaises.cs" />
+    <Compile Include="AgendaProvincias.cs" />
     <Compile Include="AgendaTarifasAdicionales.cs" />
     <Compile Include="AgendaTarifasInternacionales.cs" />
     <Compile Include="AgendaTarifasNacionales.cs" />
     <Compile Include="AgendaUsuarios.cs" />
     <Compile Include="AgendaServicios.cs" />
     <Compile Include="AgendaCuentas.cs" />
+    <Compile Include="Continente.cs" />
+    <Compile Include="Pais.cs" />
+    <Compile Include="Provincia.cs" />
     <Compile Include="Cuenta.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

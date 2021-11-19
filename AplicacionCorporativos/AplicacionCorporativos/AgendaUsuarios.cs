@@ -55,6 +55,7 @@ namespace AplicacionCorporativos
                     return usuarios;
                 }
             }
+
             Console.WriteLine("No se ha encontrado el usuario ingresado");
             return null;
         }
