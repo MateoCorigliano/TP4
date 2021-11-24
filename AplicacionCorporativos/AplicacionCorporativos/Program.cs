@@ -125,6 +125,7 @@ namespace AplicacionCorporativos
                     
                 }
             } while (true);
+            Console.WriteLine($"El numero de trackeo asociado es: {servicio.Trackeo} ");
             Console.WriteLine("Pulse una tecla para continuar");
             Console.ReadKey();
             Console.Clear();

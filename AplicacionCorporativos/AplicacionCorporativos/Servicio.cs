@@ -17,13 +17,11 @@ namespace AplicacionCorporativos
         public DateTime Fecha { get; set; }
         public string Estado { get; set; }
         public string DomicilioOrigen { get; set; }
-        //TODO AGREGAR PROPIEDAD ALTURA ORIGEN
         public string LocalidadOrigen { get; set; }
         public string ProvinciaOrigen { get; set; }
         public string RegionOrigen { get; set; }
         public string PaisOrigen { get; set; }
         public string DomicilioDestino { get; set; }
-        //TODO AGREGAR ALTURA DESTINO
         public string LocalidadDestino { get; set; }
         public string ProvinciaDestino { get; set; }
         public string RegionDestino { get; set; }
@@ -37,15 +35,7 @@ namespace AplicacionCorporativos
         public int ClienteAsociado { get; set; }
 
 
-        /*
-        public string TituloEntrada
-            {
-                get
-                {
-                    return $"{Apellido} , {Nombre} , {Dni} ";
-                }
-            }
-         */
+       
         //constuctores
         public Servicio()
         {
@@ -107,7 +97,7 @@ namespace AplicacionCorporativos
 
             if (servicio.PaisDestino == "ARGENTINA")
             {
-                servicio.LocalidadDestino = IngresoTexto("Por favor ingrese Provincia de Destino", false, "localidad destino");
+                servicio.LocalidadDestino = IngresoTexto("Por favor ingrese Localidad de Destino", false, "localidad destino");
                 servicio.ProvinciaDestino = Provincias("destino");
                 servicio.RegionDestino = AgendaProvincias.EstablecerRegion(servicio.ProvinciaDestino);
             }
@@ -605,8 +595,23 @@ namespace AplicacionCorporativos
 
         public static int ConsultaClienteAsociado()
         {
-            var usuario = AgendaUsuarios.Seleccionar();
-            var nroCliente = usuario.ClienteAsociado;
+            bool seguir = true;
+            int nroCliente = 0;
+            
+            do
+            {
+                var usuario = AgendaUsuarios.Seleccionar(); //
+
+                if (usuario != null)
+                {
+                    nroCliente = usuario.ClienteAsociado;  //
+                    seguir = false;
+                    //
+                   
+                }
+
+            } while (seguir);
+
             return nroCliente;
         }
 
@@ -791,7 +796,7 @@ namespace AplicacionCorporativos
             AgendaContinentes.MostrarContinentes();
             int codigoCont = AgendaContinentes.IngresarOpcion();
             Console.Clear();
-            Console.WriteLine("Ingrese ell país de destino");
+            Console.WriteLine("Ingrese el país de destino");
             AgendaPaises.MostrarPaises(codigoCont);
             int codigoPais = AgendaPaises.IngresarOpcion(codigoCont);
             string paisDestino = AgendaPaises.EstablecerPais(codigoPais);
