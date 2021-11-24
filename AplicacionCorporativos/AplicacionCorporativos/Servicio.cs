@@ -162,7 +162,7 @@ namespace AplicacionCorporativos
                         decimal precio = ConsultaTarifaLimitrofe(servicio.Peso);
                         servicio.Costo = servicio.Costo + precio;
 
-                        if ("METROPOLTANA" == servicio.RegionOrigen)
+                        if ("METROPOLITANA" == servicio.RegionOrigen)
                         {
                             if ("CABA" == servicio.ProvinciaOrigen)
                             {
@@ -190,7 +190,7 @@ namespace AplicacionCorporativos
                         decimal precio = ConsultaTarifaSudamerica(servicio.Peso);
                         servicio.Costo = servicio.Costo + precio;
 
-                        if ("METROPOLTANA" == servicio.RegionOrigen)
+                        if ("METROPOLITANA" == servicio.RegionOrigen)
                         {
                             if ("CABA" == servicio.ProvinciaOrigen)
                             {
@@ -259,7 +259,7 @@ namespace AplicacionCorporativos
                         decimal precio = ConsultaTarifaLimitrofe(servicio.Peso);
                         servicio.Costo = servicio.Costo + precio;
 
-                        if ("METROPOLTANA" == servicio.RegionOrigen)
+                        if ("METROPOLITANA" == servicio.RegionOrigen)
                         {
                             if ("CABA" == servicio.ProvinciaOrigen)
                             {
@@ -292,7 +292,7 @@ namespace AplicacionCorporativos
                         decimal precio = ConsultaTarifaSudamerica(servicio.Peso);
                         servicio.Costo = servicio.Costo + precio;
 
-                        if ("METROPOLTANA" == servicio.RegionOrigen)
+                        if ("METROPOLITANA" == servicio.RegionOrigen)
                         {
                             if ("CABA" == servicio.ProvinciaOrigen)
                             {
@@ -360,7 +360,7 @@ namespace AplicacionCorporativos
                         decimal precio = ConsultaTarifaLimitrofe(servicio.Peso);
                         servicio.Costo = servicio.Costo + precio;
 
-                        if ("METROPOLTANA" == servicio.RegionOrigen)
+                        if ("METROPOLITANA" == servicio.RegionOrigen)
                         {
                             if ("CABA" == servicio.ProvinciaOrigen)
                             {
@@ -388,7 +388,7 @@ namespace AplicacionCorporativos
                         decimal precio = ConsultaTarifaSudamerica(servicio.Peso);
                         servicio.Costo = servicio.Costo + precio;
 
-                        if ("METROPOLTANA" == servicio.RegionOrigen)
+                        if ("METROPOLITANA" == servicio.RegionOrigen)
                         {
                             if ("CABA" == servicio.ProvinciaOrigen)
                             {
@@ -456,7 +456,7 @@ namespace AplicacionCorporativos
                         decimal precio = ConsultaTarifaLimitrofe(servicio.Peso);
                         servicio.Costo = servicio.Costo + precio;
 
-                        if ("METROPOLTANA" == servicio.RegionOrigen)
+                        if ("METROPOLITANA" == servicio.RegionOrigen)
                         {
                             if ("CABA" == servicio.ProvinciaOrigen)
                             {
@@ -484,7 +484,7 @@ namespace AplicacionCorporativos
                         decimal precio = ConsultaTarifaSudamerica(servicio.Peso);
                         servicio.Costo = servicio.Costo + precio;
 
-                        if ("METROPOLTANA" == servicio.RegionOrigen)
+                        if ("METROPOLITANA" == servicio.RegionOrigen)
                         {
                             if ("CABA" == servicio.ProvinciaOrigen)
                             {
@@ -837,7 +837,7 @@ namespace AplicacionCorporativos
                         return true;
 
                     case "2":
-                        return true;
+                        return false;
 
                     default:
                         Console.WriteLine("No ha ingresado una opcion correcta");
