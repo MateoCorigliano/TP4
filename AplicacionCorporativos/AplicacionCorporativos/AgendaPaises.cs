@@ -95,5 +95,18 @@ namespace AplicacionCorporativos
             }
             return "";
         }
+
+        public static int TraerContinenteDestino(string nombrePais)
+        {
+            foreach (var pais in entradas.Values)
+            {
+                if (nombrePais == pais.Nombre)
+                {
+                    return pais.CodigoCont;
+                }
+            }
+
+            return 0;
+        }
     }
 }
