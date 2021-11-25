@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace AplicacionCorporativos
 {
-    class Continente
+    public class Continente
     {
         public int Codigo { get; set; }
         public string Nombre { get; set; }

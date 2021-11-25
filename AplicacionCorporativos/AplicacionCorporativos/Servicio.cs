@@ -33,6 +33,7 @@ namespace AplicacionCorporativos
         public int Peso { get; set; }
         public decimal ValorDeclarado { get; set; }
         public int ClienteAsociado { get; set; }
+        public int Continente { get; set; }
 
 
        
@@ -162,9 +163,28 @@ namespace AplicacionCorporativos
                     decimal precio = ConsultaTarifaLimitrofe(servicio.Peso);
                     servicio.Costo = servicio.Costo + precio;
                 }
-                else
+
+                if (servicio.PaisDestino == "ANTIGUA Y BARBUDA" || servicio.PaisDestino == "BAHAMAS" || servicio.PaisDestino == "BARBADOS" || servicio.PaisDestino == "BELICE" || servicio.PaisDestino == "CANADA" || servicio.PaisDestino == "COSTA RICA" || servicio.PaisDestino == "CUBA" || servicio.PaisDestino == "DOMINICA" || servicio.PaisDestino == "REPUBLICA DOMINICANA" || servicio.PaisDestino == "EL SALVADOR" || servicio.PaisDestino == "ESTADOS UNIDOS" || servicio.PaisDestino == "GRANADA" || servicio.PaisDestino == "GUATEMALA" || servicio.PaisDestino == "HAITI" || servicio.PaisDestino == "HONDURAS" || servicio.PaisDestino == "JAMAICA" || servicio.PaisDestino == "MEXICO" || servicio.PaisDestino == "NICARAGUA" || servicio.PaisDestino == "PANAMA" || servicio.PaisDestino == "SAN CRISTOBAL Y NIEVES" || servicio.PaisDestino == "SAN VICENTE Y LAS GRANADINAS" || servicio.PaisDestino == "SANTA LUCIA" || servicio.PaisDestino == "SANTO TOME Y PRINCIPE" || servicio.PaisDestino == "SENEGAL" || servicio.PaisDestino == "TRINIDAD Y TOBAGO"  )
+                {
+                    decimal precio = ConsultaTarifaAmericaNorte(servicio.Peso);
+                    servicio.Costo = servicio.Costo + precio;
+                }
+
+                if (servicio.PaisDestino == "COLOMBIA" || servicio.PaisDestino == "ECUADOR" || servicio.PaisDestino == "GUYANA" || servicio.PaisDestino == "PERU" || servicio.PaisDestino == "SURINAM" || servicio.PaisDestino == "VENEZUELA" )
                 {
                     decimal precio = ConsultaTarifaSudamerica(servicio.Peso);
+                    servicio.Costo = servicio.Costo + precio;
+                }
+
+                if (servicio.PaisDestino == "ALBANIA" || servicio.PaisDestino == "ALEMANIA" || servicio.PaisDestino == "ANDORRA" || servicio.PaisDestino == "AUSTRIA" || servicio.PaisDestino == "BELGICA" || servicio.PaisDestino == "BIELORRUSIA" || servicio.PaisDestino == "BOSNIA Y HERZEGOVINA" || servicio.PaisDestino == "BULGARIA" || servicio.PaisDestino == "REPUBLICA CHECA" || servicio.PaisDestino == "CHIPRE" || servicio.PaisDestino == "CROACIA" || servicio.PaisDestino == "DINAMARCA" || servicio.PaisDestino == "ESLOVAQUIA" || servicio.PaisDestino == "ESLOVENIA" || servicio.PaisDestino == "ESPAÑA" || servicio.PaisDestino == "ESTONIA" || servicio.PaisDestino == "FINLANDIA" || servicio.PaisDestino == "FRANCIA" || servicio.PaisDestino == "GRECIA" || servicio.PaisDestino == "HUNGRIA" || servicio.PaisDestino == "IRLANDA" || servicio.PaisDestino == "ISLANDIA" || servicio.PaisDestino == "ITALIA" || servicio.PaisDestino == "LETONIA" || servicio.PaisDestino == "LIECHTENSTEIN" || servicio.PaisDestino == "LITUANIA" || servicio.PaisDestino == "LUXEMBURGO" || servicio.PaisDestino == "MACEDONIA DEL NORTE" || servicio.PaisDestino == "MALTA" || servicio.PaisDestino == "MOLDAVIA" || servicio.PaisDestino == "MONACO" || servicio.PaisDestino == "MONTENEGRO" || servicio.PaisDestino == "NORUEGA" || servicio.PaisDestino == "PAISES BAJOS" || servicio.PaisDestino == "POLONIA" || servicio.PaisDestino == "PORTUGAL" || servicio.PaisDestino == "REINO UNIDO" || servicio.PaisDestino == "RUMANIA" || servicio.PaisDestino == "RUSIA" || servicio.PaisDestino == "SAN MARINO" || servicio.PaisDestino == "SERBIA" || servicio.PaisDestino == "SUECIA" || servicio.PaisDestino == "SUIZA" || servicio.PaisDestino == "TURQUIA" || servicio.PaisDestino == "UCRANIA" || servicio.PaisDestino == "CIUDAD DEL VATICANO" )
+                {
+                    decimal precio = ConsultaTarifaEuropa(servicio.Peso);
+                    servicio.Costo = servicio.Costo + precio;
+                }
+
+                if (servicio.PaisDestino == "AFGANISTAN" || servicio.PaisDestino == "ARABIA SAUDITA" || servicio.PaisDestino == "ARMENIA" || servicio.PaisDestino == "AZERBAIYAN" || servicio.PaisDestino == "BANGLADES" || servicio.PaisDestino == "BAREIN" || servicio.PaisDestino == "MYANMAR" || servicio.PaisDestino == "BRUNEI" || servicio.PaisDestino == "BUTAN" || servicio.PaisDestino == "CAMBOYA" || servicio.PaisDestino == "CATAR" || servicio.PaisDestino == "CHINA" || servicio.PaisDestino == "COREA DEL NORTE" || servicio.PaisDestino == "COREA DEL SUR" || servicio.PaisDestino == "EMIRATOS ARABES UNIDOS" || servicio.PaisDestino == "FILIPINAS" || servicio.PaisDestino == "GEORGIA" || servicio.PaisDestino == "INDIA" || servicio.PaisDestino == "INDONESIA" || servicio.PaisDestino == "IRAK" || servicio.PaisDestino == "IRAN" || servicio.PaisDestino == "ISRAEL" || servicio.PaisDestino == "JAPON" || servicio.PaisDestino == "JORDANIA" || servicio.PaisDestino == "KAZAJISTAN" || servicio.PaisDestino == "KIRGUISTAN" || servicio.PaisDestino == "LAOS" || servicio.PaisDestino == "LIBANO" || servicio.PaisDestino == "MALASIA" || servicio.PaisDestino == "MALDIVAS" || servicio.PaisDestino == "MONGOLIA" || servicio.PaisDestino == "NEPAL" || servicio.PaisDestino == "OMAN" || servicio.PaisDestino == "PAKISTAN" || servicio.PaisDestino == "PALESTINA" || servicio.PaisDestino == "SINGAPUR" || servicio.PaisDestino == "SIRIA" || servicio.PaisDestino == "SRI LANKA" || servicio.PaisDestino == "TAILANDIA" || servicio.PaisDestino == "TAYIKISTAN" || servicio.PaisDestino == "TIMOR ORIENTAL" || servicio.PaisDestino == "TURKMENISTAN" || servicio.PaisDestino == "UZBEKISTAN" || servicio.PaisDestino == "VIETNAM" || servicio.PaisDestino == "YEMEN" )
+                { 
+                    decimal precio = ConsultaTarifaAsia(servicio.Peso);
                     servicio.Costo = servicio.Costo + precio;
                 }
 
@@ -222,6 +242,24 @@ namespace AplicacionCorporativos
         private static decimal ConsultaTarifaSudamerica(int pesoLimite)
         {
             decimal precio = AgendaTarifasInternacionales.SeleccionarPrecioSudamerica(pesoLimite);
+            return precio;
+        }
+
+        private static decimal ConsultaTarifaAmericaNorte(int pesoLimite)
+        {
+            decimal precio = AgendaTarifasInternacionales.SeleccionarPrecioAmericaNorte(pesoLimite);
+            return precio;
+        }
+
+        private static decimal ConsultaTarifaEuropa(int pesoLimite)
+        {
+            decimal precio = AgendaTarifasInternacionales.SeleccionarPrecioEuropa(pesoLimite);
+            return precio;
+        }
+
+        private static decimal ConsultaTarifaAsia(int pesoLimite)
+        {
+            decimal precio = AgendaTarifasInternacionales.SeleccionarPrecioAsia(pesoLimite);
             return precio;
         }
 
@@ -358,7 +396,7 @@ namespace AplicacionCorporativos
                     continue;
                 }
 
-                if (salida <= 0 || salida >= 30000)
+                if (salida <= 0 || salida > 30000)
                 {
                     Console.WriteLine("El valor ingresado debe ser mayor a cero y menor o igual a 30000");
                     continue;

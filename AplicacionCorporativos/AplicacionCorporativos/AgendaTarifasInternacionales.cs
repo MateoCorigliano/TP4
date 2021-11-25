@@ -76,9 +76,63 @@ namespace AplicacionCorporativos
 
         }
 
+        public static decimal SeleccionarPrecioAmericaNorte(int pesoLimite)
+        {
+            var modelo = TarifasInternacionales.CrearModeloBusqueda(pesoLimite);
 
-       
+            foreach (var tarifas in entradas.Values)
+            {
 
+
+                if (tarifas.CoincideCon(modelo))
+                {
+                    return tarifas.PrecioAmericaNorte;
+                }
+
+            }
+
+            return 0;
+
+        }
+
+
+        public static decimal SeleccionarPrecioEuropa(int pesoLimite)
+        {
+            var modelo = TarifasInternacionales.CrearModeloBusqueda(pesoLimite);
+
+            foreach (var tarifas in entradas.Values)
+            {
+
+
+                if (tarifas.CoincideCon(modelo))
+                {
+                    return tarifas.PrecioEuropa;
+                }
+
+            }
+
+            return 0;
+
+        }
+
+        public static decimal SeleccionarPrecioAsia(int pesoLimite)
+        {
+            var modelo = TarifasInternacionales.CrearModeloBusqueda(pesoLimite);
+
+            foreach (var tarifas in entradas.Values)
+            {
+
+
+                if (tarifas.CoincideCon(modelo))
+                {
+                    return tarifas.PrecioAsia;
+                }
+
+            }
+
+            return 0;
+
+        }
 
 
 

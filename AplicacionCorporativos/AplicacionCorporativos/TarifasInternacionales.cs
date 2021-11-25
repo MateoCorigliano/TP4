@@ -15,6 +15,9 @@ namespace AplicacionCorporativos
         public int PesoLimite { get; set; }
         public decimal PrecioLimitrofe { get; set; }
         public decimal PrecioSudamerica { get; set; }
+        public decimal PrecioAmericaNorte { get; set; }
+        public decimal PrecioEuropa { get; set; }
+        public decimal PrecioAsia { get; set; }
 
         public TarifasInternacionales()
         {
@@ -27,6 +30,9 @@ namespace AplicacionCorporativos
             PesoLimite = int.Parse(datos[0]);
             PrecioLimitrofe = decimal.Parse(datos[1]);
             PrecioSudamerica = decimal.Parse(datos[2]);
+            PrecioAmericaNorte = decimal.Parse(datos[3]);
+            PrecioEuropa = decimal.Parse(datos[4]);
+            PrecioAsia = decimal.Parse(datos[5]);
 
         }
 
