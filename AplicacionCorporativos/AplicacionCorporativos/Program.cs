@@ -104,6 +104,8 @@ namespace AplicacionCorporativos
             Console.WriteLine($"El costo total por el servicio es: {servicio.Costo}");
 
             //confirmacion se servicio:
+
+
             
             do
             {
@@ -114,18 +116,18 @@ namespace AplicacionCorporativos
                 if (opcion == "S")
                 {
                     AgendaServicios.Agregar(servicio);
+                    Console.WriteLine($"El numero de trackeo asociado es: {servicio.Trackeo} ");
                     break;
                 }
                 if (opcion == "N")
                 {
                     break;
                 }
-                else { 
-                Console.WriteLine("Por favor introducir un valor correcto");
-                    
+                else
+                { 
+                    Console.WriteLine("Por favor introducir un valor correcto");
                 }
             } while (true);
-            Console.WriteLine($"El numero de trackeo asociado es: {servicio.Trackeo} ");
             Console.WriteLine("Pulse una tecla para continuar");
             Console.ReadKey();
             Console.Clear();
