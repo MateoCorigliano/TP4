@@ -127,395 +127,45 @@ namespace AplicacionCorporativos
 
             //primero valido en que rango de peso se encuentra luego la distancia de entrega
 
-            //peso hasta 500gr:
-
-            if (servicio.Peso < 500)
+            if (servicio.RegionDestino == servicio.RegionOrigen)
             {
-                //if(servicio.PaisDestino == servicio.PaisOrigen)
-                //{ 
-                    if(servicio.RegionDestino == servicio.RegionOrigen)
-                    {
-                        if(servicio.ProvinciaDestino == servicio.ProvinciaOrigen)
-                        {
-                            if(servicio.LocalidadDestino == servicio.LocalidadOrigen)
-                            {
-                                decimal precio = ConsultaTarifaLocal(servicio.Peso);
-                                servicio.Costo = servicio.Costo + precio;
-                            }
-                            else
-                            {
-                                decimal precio = ConsultaTarifaProvincial(servicio.Peso);
-                                servicio.Costo = servicio.Costo + precio;
-                            }
-                        }
-                        else
-                        {
-                            decimal precio = ConsultaTarifaRegional(servicio.Peso);
-                            servicio.Costo = servicio.Costo + precio;
-                        }
-                    }
-                    else
-                    {
-                        decimal precio = ConsultaTarifaNacional(servicio.Peso);
-                        servicio.Costo = servicio.Costo + precio;
-                    }
-
-                
-                //}
-                if (servicio.PaisOrigen != servicio.PaisDestino)
+                if (servicio.ProvinciaDestino == servicio.ProvinciaOrigen)
                 {
-                    //servicios internacionales
-                    if(servicio.PaisDestino == "BRASIL" || servicio.PaisDestino == "URUGUAY" || servicio.PaisDestino == "BOLIVIA" || servicio.PaisDestino == "CHILE" || servicio.PaisDestino == "PARAGUAY" )
+                    if (servicio.LocalidadDestino == servicio.LocalidadOrigen)
                     {
-                        decimal precio = ConsultaTarifaLimitrofe(servicio.Peso);
+                        decimal precio = ConsultaTarifaLocal(servicio.Peso);
                         servicio.Costo = servicio.Costo + precio;
-
-                        /*if ("METROPOLITANA" == servicio.RegionOrigen)
-                        {
-                            if ("CABA" == servicio.ProvinciaOrigen)
-                            {
-                                if ("CABA" == servicio.LocalidadOrigen)
-                                {
-                                    precio = ConsultaTarifaLocal(servicio.Peso);
-
-                                    servicio.Costo = servicio.Costo + precio;
-                                }
-                                else
-                                {
-                                    precio = ConsultaTarifaProvincial(servicio.Peso);
-                                    servicio.Costo = servicio.Costo + precio;
-                                }
-                            }
-                            else
-                            {
-                                precio = ConsultaTarifaRegional(servicio.Peso);
-                                servicio.Costo = servicio.Costo + precio;
-                            }
-                        }*/
                     }
                     else
                     {
-                        decimal precio = ConsultaTarifaSudamerica(servicio.Peso);
-                        servicio.Costo = servicio.Costo + precio;
-
-                        /*if ("METROPOLITANA" == servicio.RegionOrigen)
-                        {
-                            if ("CABA" == servicio.ProvinciaOrigen)
-                            {
-                                if ("CABA" == servicio.LocalidadOrigen)
-                                {
-                                    precio = ConsultaTarifaLocal(servicio.Peso);
-
-                                    servicio.Costo = servicio.Costo + precio;
-                                }
-                                else
-                                {
-                                    precio = ConsultaTarifaProvincial(servicio.Peso);
-                                    servicio.Costo = servicio.Costo + precio;
-                                }
-                            }
-                            else
-                            {
-                                precio = ConsultaTarifaRegional(servicio.Peso);
-                                servicio.Costo = servicio.Costo + precio;
-                            }
-                        }*/
-                    }
-                }
-
-            }
-
-            //peso hasta 10kg
-            if (servicio.Peso < 10000 && servicio.Peso >= 500) 
-            {
-                if (servicio.PaisDestino == servicio.PaisOrigen)
-                {
-                    if (servicio.RegionDestino == servicio.RegionOrigen)
-                    {
-                        if (servicio.ProvinciaDestino == servicio.ProvinciaOrigen)
-                        {
-                            if (servicio.LocalidadDestino == servicio.LocalidadOrigen)
-                            {
-                                decimal precio = ConsultaTarifaLocal(servicio.Peso);
-
-                                servicio.Costo = servicio.Costo + precio;
-                            }
-                            else
-                            {
-                                decimal precio = ConsultaTarifaProvincial(servicio.Peso);
-                                servicio.Costo = servicio.Costo + precio;
-                            }
-                        }
-                        else
-                        {
-                            decimal precio = ConsultaTarifaRegional(servicio.Peso);
-                            servicio.Costo = servicio.Costo + precio;
-                        }
-                    }
-                    else
-                    {
-                        decimal precio = ConsultaTarifaNacional(servicio.Peso);
+                        decimal precio = ConsultaTarifaProvincial(servicio.Peso);
                         servicio.Costo = servicio.Costo + precio;
                     }
-
                 }
                 else
                 {
-                    //servicios internacionales
-                    if (servicio.PaisDestino == "BRASIL" || servicio.PaisDestino == "URUGUAY" || servicio.PaisDestino == "BOLIVIA" || servicio.PaisDestino == "CHILE" || servicio.PaisDestino == "PARAGUAY")
-                    {
-                        decimal precio = ConsultaTarifaLimitrofe(servicio.Peso);
-                        servicio.Costo = servicio.Costo + precio;
-
-                        if ("METROPOLITANA" == servicio.RegionOrigen)
-                        {
-                            if ("CABA" == servicio.ProvinciaOrigen)
-                            {
-                                if ("CABA" == servicio.LocalidadOrigen)
-                                {
-                                    precio = ConsultaTarifaLocal(servicio.Peso);
-
-                                    servicio.Costo = servicio.Costo + precio;
-                                }
-                                else
-                                {
-                                    precio = ConsultaTarifaProvincial(servicio.Peso);
-                                    servicio.Costo = servicio.Costo + precio;
-                                }
-                            }
-                            else
-                            {
-                                precio = ConsultaTarifaRegional(servicio.Peso);
-                                servicio.Costo = servicio.Costo + precio;
-                            }
-                        }
-                        else
-                        {
-                            precio = ConsultaTarifaNacional(servicio.Peso);
-                            servicio.Costo = servicio.Costo + precio;
-                        }
-                    }
-                    else
-                    {
-                        decimal precio = ConsultaTarifaSudamerica(servicio.Peso);
-                        servicio.Costo = servicio.Costo + precio;
-
-                        if ("METROPOLITANA" == servicio.RegionOrigen)
-                        {
-                            if ("CABA" == servicio.ProvinciaOrigen)
-                            {
-                                if ("CABA" == servicio.LocalidadOrigen)
-                                {
-                                    precio = ConsultaTarifaLocal(servicio.Peso);
-
-                                    servicio.Costo = servicio.Costo + precio;
-                                }
-                                else
-                                {
-                                    precio = ConsultaTarifaProvincial(servicio.Peso);
-                                    servicio.Costo = servicio.Costo + precio;
-                                }
-                            }
-                            else
-                            {
-                                precio = ConsultaTarifaRegional(servicio.Peso);
-                                servicio.Costo = servicio.Costo + precio;
-                            }
-                        }
-                    }
+                    decimal precio = ConsultaTarifaRegional(servicio.Peso);
+                    servicio.Costo = servicio.Costo + precio;
                 }
-
+            }
+            else
+            {
+                decimal precio = ConsultaTarifaNacional(servicio.Peso);
+                servicio.Costo = servicio.Costo + precio;
             }
 
-            //peso hasta 20kg
-            if (servicio.Peso < 20000 && servicio.Peso >= 10000)
+            if (servicio.PaisOrigen != servicio.PaisDestino)
             {
-                if (servicio.PaisDestino == servicio.PaisOrigen)
+                //servicios internacionales
+                if (servicio.PaisDestino == "BRASIL" || servicio.PaisDestino == "URUGUAY" || servicio.PaisDestino == "BOLIVIA" || servicio.PaisDestino == "CHILE" || servicio.PaisDestino == "PARAGUAY")
                 {
-                    if (servicio.RegionDestino == servicio.RegionOrigen)
-                    {
-                        if (servicio.ProvinciaDestino == servicio.ProvinciaOrigen)
-                        {
-                            if (servicio.LocalidadDestino == servicio.LocalidadOrigen)
-                            {
-                                decimal precio = ConsultaTarifaLocal(servicio.Peso);
-                                servicio.Costo = servicio.Costo + precio;
-                            }
-                            else
-                            {
-                                decimal precio = ConsultaTarifaProvincial(servicio.Peso);
-                                servicio.Costo = servicio.Costo + precio;
-                            }
-                        }
-                        else
-                        {
-                            decimal precio = ConsultaTarifaRegional(servicio.Peso);
-                            servicio.Costo = servicio.Costo + precio;
-                        }
-                    }
-                    else
-                    {
-                        decimal precio = ConsultaTarifaNacional(servicio.Peso);
-                        servicio.Costo = servicio.Costo + precio;
-                    }
-
+                    decimal precio = ConsultaTarifaLimitrofe(servicio.Peso);
+                    servicio.Costo = servicio.Costo + precio;
                 }
                 else
                 {
-                    //servicios internacionales
-                    if (servicio.PaisDestino == "BRASIL" || servicio.PaisDestino == "URUGUAY" || servicio.PaisDestino == "BOLIVIA" || servicio.PaisDestino == "CHILE" || servicio.PaisDestino == "PARAGUAY")
-                    {
-                        decimal precio = ConsultaTarifaLimitrofe(servicio.Peso);
-                        servicio.Costo = servicio.Costo + precio;
-
-                        if ("METROPOLITANA" == servicio.RegionOrigen)
-                        {
-                            if ("CABA" == servicio.ProvinciaOrigen)
-                            {
-                                if ("CABA" == servicio.LocalidadOrigen)
-                                {
-                                    precio = ConsultaTarifaLocal(servicio.Peso);
-
-                                    servicio.Costo = servicio.Costo + precio;
-                                }
-                                else
-                                {
-                                    precio = ConsultaTarifaProvincial(servicio.Peso);
-                                    servicio.Costo = servicio.Costo + precio;
-                                }
-                            }
-                            else
-                            {
-                                precio = ConsultaTarifaRegional(servicio.Peso);
-                                servicio.Costo = servicio.Costo + precio;
-                            }
-                        }
-                    }
-                    else
-                    {
-                        decimal precio = ConsultaTarifaSudamerica(servicio.Peso);
-                        servicio.Costo = servicio.Costo + precio;
-
-                        if ("METROPOLITANA" == servicio.RegionOrigen)
-                        {
-                            if ("CABA" == servicio.ProvinciaOrigen)
-                            {
-                                if ("CABA" == servicio.LocalidadOrigen)
-                                {
-                                    precio = ConsultaTarifaLocal(servicio.Peso);
-
-                                    servicio.Costo = servicio.Costo + precio;
-                                }
-                                else
-                                {
-                                    precio = ConsultaTarifaProvincial(servicio.Peso);
-                                    servicio.Costo = servicio.Costo + precio;
-                                }
-                            }
-                            else
-                            {
-                                precio = ConsultaTarifaRegional(servicio.Peso);
-                                servicio.Costo = servicio.Costo + precio;
-                            }
-                        }
-                    }
-                }
-
-            }
-
-            //peso hasta 30kg
-            if (servicio.Peso <= 30000 && servicio.Peso >= 20000)
-            {
-                if (servicio.PaisDestino == servicio.PaisOrigen)
-                {
-                    if (servicio.RegionDestino == servicio.RegionOrigen)
-                    {
-                        if (servicio.ProvinciaDestino == servicio.ProvinciaOrigen)
-                        {
-                            if (servicio.LocalidadDestino == servicio.LocalidadOrigen)
-                            {
-                                decimal precio = ConsultaTarifaLocal(servicio.Peso);
-                                servicio.Costo = servicio.Costo + precio;
-                            }
-                            else
-                            {
-                                decimal precio = ConsultaTarifaProvincial(servicio.Peso);
-                                servicio.Costo = servicio.Costo + precio;
-                            }
-                        }
-                        else
-                        {
-                            decimal precio = ConsultaTarifaRegional(servicio.Peso);
-                            servicio.Costo = servicio.Costo + precio;
-                        }
-                    }
-                    else
-                    {
-                        decimal precio = ConsultaTarifaNacional(servicio.Peso);
-                        servicio.Costo = servicio.Costo + precio;
-                    }
-
-                }
-                else
-                {
-                    //servicios internacionales
-                    if (servicio.PaisDestino == "BRASIL" || servicio.PaisDestino == "URUGUAY" || servicio.PaisDestino == "BOLIVIA" || servicio.PaisDestino == "CHILE" || servicio.PaisDestino == "PARAGUAY")
-                    {
-                        decimal precio = ConsultaTarifaLimitrofe(servicio.Peso);
-                        servicio.Costo = servicio.Costo + precio;
-
-                        if ("METROPOLITANA" == servicio.RegionOrigen)
-                        {
-                            if ("CABA" == servicio.ProvinciaOrigen)
-                            {
-                                if ("CABA" == servicio.LocalidadOrigen)
-                                {
-                                    precio = ConsultaTarifaLocal(servicio.Peso);
-
-                                    servicio.Costo = servicio.Costo + precio;
-                                }
-                                else
-                                {
-                                    precio = ConsultaTarifaProvincial(servicio.Peso);
-                                    servicio.Costo = servicio.Costo + precio;
-                                }
-                            }
-                            else
-                            {
-                                precio = ConsultaTarifaRegional(servicio.Peso);
-                                servicio.Costo = servicio.Costo + precio;
-                            }
-                        }
-                    }
-                    else
-                    {
-                        decimal precio = ConsultaTarifaSudamerica(servicio.Peso);
-                        servicio.Costo = servicio.Costo + precio;
-
-                        if ("METROPOLITANA" == servicio.RegionOrigen)
-                        {
-                            if ("CABA" == servicio.ProvinciaOrigen)
-                            {
-                                if ("CABA" == servicio.LocalidadOrigen)
-                                {
-                                    precio = ConsultaTarifaLocal(servicio.Peso);
-
-                                    servicio.Costo = servicio.Costo + precio;
-                                }
-                                else
-                                {
-                                    precio = ConsultaTarifaProvincial(servicio.Peso);
-                                    servicio.Costo = servicio.Costo + precio;
-                                }
-                            }
-                            else
-                            {
-                                precio = ConsultaTarifaRegional(servicio.Peso);
-                                servicio.Costo = servicio.Costo + precio;
-                            }
-                        }
-
-                    }
+                    decimal precio = ConsultaTarifaSudamerica(servicio.Peso);
+                    servicio.Costo = servicio.Costo + precio;
                 }
 
             }
@@ -535,8 +185,6 @@ namespace AplicacionCorporativos
                 decimal cargo = ConsultaCargoRetiro(servicio.RetiroPuerta);
                 servicio.Costo = servicio.Costo + cargo;
             }
-
-
 
             return servicio;
         }
