@@ -194,7 +194,18 @@ namespace AplicacionCorporativos
             if (servicio.Urgente == true)
             {
                 decimal cargo = ConsultaCargoUrgente(servicio.Urgente);
-                servicio.Costo = servicio.Costo + cargo;
+                decimal tope = ConsultaTopeUrgente(servicio.Urgente);
+                decimal recargo = (servicio.Costo * (1 + (cargo / 100))) - servicio.Costo ;
+
+                if (recargo > tope)
+                {
+                    servicio.Costo = servicio.Costo + tope;
+                }
+                else
+                {
+                  servicio.Costo = servicio.Costo + recargo;
+                }
+
             }
             if (servicio.EntregaPuerta == true)
             {
